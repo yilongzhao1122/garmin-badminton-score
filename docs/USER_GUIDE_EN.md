@@ -1,4 +1,4 @@
-# Garmin Badminton Score v0.9.0 — User Guide
+# Garmin Badminton Score v0.10.0 — User Guide
 
 [中文](USER_GUIDE_CN.md) · [English project overview](../README_EN.md)
 
@@ -52,7 +52,7 @@ If you accidentally prepare the next game, press 5 once on its 0:0 scoreboard to
 A one-game match ends after its game. A best-of-three match ends after one side wins two games. The final scoreboard offers4 for results and 5 for undo.
 
 1. Press 4. An own-team win shows 恭喜获胜 (Congratulations!) with a green trophy; an opponent win shows 继续加油 (Keep going!) with a yellow arrow.
-2. The lightweight effect lasts about2.4 seconds. Press 4 or5 to skip it.
+2. The lightweight effect lasts about2.4 seconds. Press 4 or 5 to skip it.
 3. The next screen asks 是否保存比赛？ (Save the match?), with Yes selected. The animation never selects or saves on your behalf.
 4. Yes saves the pending ordinary FIT activity and the match archive, including game scores and times, then returns to 0:0 ready without closing the app.
 5. No discards the currently unsaved activity and does not create a new match archive, then returns to ready. Previously saved activities and the last archived match are not deleted.
@@ -75,7 +75,7 @@ Left side, top to bottom:1 LIGHT,2 UP/MENU,3 DOWN. Right side:4 START above5 BAC
 | 5 short | Court → score; score → undo | Undo recent action | Back one level |
 | Hold 2 | Open menu | Open menu | No scoring action |
 
-After each rally, press 2 or3 once, check the score, then press 4. Start the first rally with 4 so activity recording starts from the beginning. Buttons2/3 do not add points on the data/clock pages;5 returns to the scoreboard.
+After each rally, press 2 or 3 once, check the score, then press 4. Start the first rally with 4 so activity recording starts from the beginning. Buttons2/3 do not add points on the data/clock pages;5 returns to the scoreboard.
 
 | Chinese menu label | Meaning |
 | --- | --- |
@@ -133,11 +133,13 @@ The next game's timer starts with 4 after setup. It does not automatically resum
 
 Unavailable heart rate displays `--`; wait for valid sampling on the actual watch. Current/average/maximum heart rate, calories, duration and a clock are available on data pages when the device supplies them.
 
-## 9. Graphics and memory
+## 9. Menu size, phone settings and memory
+
+Menu titles, rows, counters and key hints default to 19px, with up to two lines for long labels. Score/court/player fonts retain their existing sizes. After installation through the Connect IQ Store, the phone setting selects 19px or 16px. The app reads it at startup and redraws on settings changes without changing the match or activity session. A sideloaded PRG alone does not register the phone settings form. See [Store submission and phone settings](CONNECT_IQ_EN.md).
 
 The result effect uses drawing primitives, existing fonts, a 400 ms timer and at most six frames. Skipping or hiding stops it. There is no retained frame-image list or full-screen bitmap buffer.
 
-Courts use lines, markers and identifiers. A single 16 px Chinese bitmap font is cached; scores use device number fonts. Documentation previews remain outside the runtime resource path. Game checkpoints and undo history are bounded; staged setup reuses immutable history snapshots.
+Courts use lines, markers and identifiers. Separate 16px label and 19px menu subsets are cached; scores use device number fonts. Documentation previews remain outside the runtime resource path. Game checkpoints and undo history are bounded; staged setup reuses immutable history snapshots.
 
 `ENABLE_MATCH_FIT_EXPORT=false` in GarminRecordingBackend keeps custom field allocation disabled. The optional13-field implementation is a development feature, not the public default.
 
@@ -163,7 +165,7 @@ Perform a short real-watch check: press 4 to start, wait for heart rate, finish 
 8. Connect a data-capableUSB cable, finish any active watch activity, copy the device PRG to `GARMIN/APPS`, safely eject and open 羽毛球计分 from the watch's activity list.
 9. Start and save on the watch, then synchronize the paired Connect phone app.
 
-The package includes the prebuilt Chinese font, but no SDK, key, PRG orIQ. Python is not needed for a normal Garmin build. Keep the appID and your signing key consistent for updates. Do not copy documentation previews into resources. See [Installation](INSTALL_EN.md).
+The package includes the prebuilt Chinese font, but no SDK, key, PRG or IQ. Python is not needed for a normal Garmin build. Keep the appID and your signing key consistent for updates. Do not copy documentation previews into resources. See [Installation](INSTALL_EN.md).
 
 ## 12. Acceptance and validation boundary
 
@@ -171,7 +173,7 @@ Verify default-Yes questions, No returning to the original score, staged service
 
 Also verify save/discard returning to ready, retry without duplicate FIT, wrapping menus, BACK navigation, Chinese glyphs, lock/unlock and pause behavior. Measure native memory and test actual phone synchronization.
 
-The release preparation checks comprise160 adapted-source/mocked-API checks. They do not replace official compilation, native tests, simulator execution or physical-device testing. See [Validation](VALIDATION_EN.md) for the exact scope.
+The release preparation checks comprise166 adapted-source/mocked-API checks. They do not replace official compilation, native tests, simulator execution or physical-device testing. See [Validation](VALIDATION_EN.md) for the exact scope.
 
 ## 13. References
 

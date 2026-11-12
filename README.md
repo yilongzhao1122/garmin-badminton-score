@@ -6,7 +6,7 @@
 
 面向 Garmin Fēnix 6X Pro / Solar 的中文羽毛球运动应用。
 
-[![Version](https://img.shields.io/badge/source-v0.9.0-00b96b)](https://github.com/yilongzhao1122/garmin-badminton-score/releases/latest)
+[![Version](https://img.shields.io/badge/source-v0.10.0-00b96b)](https://github.com/yilongzhao1122/garmin-badminton-score/releases/latest)
 [![Target](https://img.shields.io/badge/device-fenix6xpro-333333)](manifest.xml)
 [![License](https://img.shields.io/badge/code-MIT-blue)](LICENSE)
 
@@ -26,15 +26,19 @@
 - **比赛流程完整**：局末保存、下一局接发球设置、胜利或加油页面、整场保存或放弃。
 - **中文循环菜单**：逐层返回，可更正接发球、撤销误记、锁定计分、查看数据与时钟。
 - **运动记录**：开启记录后读取心率、热量和时长；保存普通 FIT 活动，再通过手表同步 Garmin Connect。
-- **轻量绘制**：场地和结果效果使用线条、圆点绘制；单套中文点阵字库，无全屏背景图片。
+- **轻量绘制**：场地和结果效果使用线条、圆点绘制；缓存16px标签和19px菜单字库，无全屏背景图片。
+
+菜单默认字号为19px；支持通过Connect IQ手机设置选择19px或16px。首次商店安装、字号同步和商店更新流程见 [Connect IQ 发布与手机设置](docs/CONNECT_IQ_CN.md)。
+
+![菜单字号对比，非真机截图](docs/assets/menu-size.png)
 
 ## 下载与安装
 
 | 文件 | 用途 |
 | --- | --- |
-| [源码包 ZIP](https://github.com/yilongzhao1122/garmin-badminton-score/releases/latest/download/garmin-badminton-score-v0.9.0-source.zip) | 完整工程，通过自己的 SDK 和密钥构建 |
-| [离线中文指南 HTML](https://github.com/yilongzhao1122/garmin-badminton-score/releases/latest/download/garmin-badminton-score-v0.9.0-guide-cn.html) | 下载后在电脑或手机浏览器阅读，图片已内嵌 |
-| [离线英文指南 HTML](https://github.com/yilongzhao1122/garmin-badminton-score/releases/latest/download/garmin-badminton-score-v0.9.0-guide-en.html) | 英文安装与操作说明，图片已内嵌 |
+| [源码包 ZIP](https://github.com/yilongzhao1122/garmin-badminton-score/releases/latest/download/garmin-badminton-score-v0.10.0-source.zip) | 完整工程，通过自己的 SDK 和密钥构建 |
+| [离线中文指南 HTML](https://github.com/yilongzhao1122/garmin-badminton-score/releases/latest/download/garmin-badminton-score-v0.10.0-guide-cn.html) | 下载后在电脑或手机浏览器阅读，图片已内嵌 |
+| [离线英文指南 HTML](https://github.com/yilongzhao1122/garmin-badminton-score/releases/latest/download/garmin-badminton-score-v0.10.0-guide-en.html) | 英文安装与操作说明，图片已内嵌 |
 | [SHA256SUMS.txt](https://github.com/yilongzhao1122/garmin-badminton-score/releases/latest/download/SHA256SUMS.txt) | 校验下载文件 |
 
 **这是源码发行版，未提供预编译 PRG。** 先安装 Garmin 官方 Monkey C 扩展和 SDK，下载 `fenix6xpro` 设备包，运行 `Monkey C: Verify Installation`。VS Code 打开工程根目录，使用自己的 Developer Key，打开 `source/BadmintonApp.mc` → **Ctrl+F5 → fenix6xpro**。
@@ -91,7 +95,7 @@ node tools/check_performance.cjs
 node tools/check_serve_ui.cjs
 ```
 
-当前 **160项 Node 逻辑 / 模拟 API 检查通过**，并提供25个 `Run No Evil` 原生格式测试。Node 检查不替代 Garmin SDK 编译、官方模拟器、真实堆内存或 Connect 同步验收。完整范围见 [VALIDATION.md](VALIDATION.md)。
+当前 **166项 Node 逻辑 / 模拟 API 检查通过**，并提供25个 `Run No Evil` 原生格式测试。Node 检查不替代 Garmin SDK 编译、官方模拟器、真实堆内存或 Connect 同步验收。完整范围见 [VALIDATION.md](VALIDATION.md)。
 
 开发说明见 [CONTRIBUTING.md](CONTRIBUTING.md)，代码结构见 [ARCHITECTURE.md](docs/ARCHITECTURE.md)。
 

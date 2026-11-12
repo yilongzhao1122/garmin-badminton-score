@@ -348,9 +348,28 @@ class MatchMenu extends WatchUi.View {
     }
     function drawTextFit(dc as Graphics.Dc, x, y, label, color, width) {
         var font = app.fonts.normal;
-        if (dc.getTextWidthInPixels(label, font) > width || dc.getFontHeight(font) > 28) { font = app.fonts.small; }
         dc.setColor(color, Graphics.COLOR_BLACK);
-        dc.drawText(x, y - dc.getFontHeight(font) / 2, font, label, Graphics.TEXT_JUSTIFY_CENTER);
+        var height = dc.getFontHeight(font);
+        if (dc.getTextWidthInPixels(label, font) <= width) {
+            dc.drawText(x, y - height / 2, font, label, Graphics.TEXT_JUSTIFY_CENTER);
+            return;
+        }
+        // Keep the selected size: wrap a long message into at most two lines.
+        var lines = []; var line = "";
+        var chars = label.toCharArray();
+        for (var i = 0; i < chars.size(); i += 1) {
+            var ch = chars[i].toString();
+            if (dc.getTextWidthInPixels(line + ch, font) > width && !line.equals("")) {
+                lines.add(line); line = "";
+                if (lines.size() == 2) { break; }
+            }
+            line += ch;
+        }
+        if (lines.size() < 2 && !line.equals("")) { lines.add(line); }
+        for (var n = 0; n < lines.size(); n += 1) {
+            dc.drawText(x, y - height * lines.size() / 2 + n * height,
+                font, lines[n], Graphics.TEXT_JUSTIFY_CENTER);
+        }
     }
     function drawResult(dc as Graphics.Dc) {
         var dx = (dc.getWidth() - 280) / 2; var dy = (dc.getHeight() - 280) / 2;
@@ -402,7 +421,7 @@ class MatchMenu extends WatchUi.View {
             self.drawTextFit(dc, 140 + dx, 28 + dy, "是否保存当前", Graphics.COLOR_WHITE, 150);
             self.drawTextFit(dc, 140 + dx, 54 + dy, "对局结果", Graphics.COLOR_WHITE, 150);
             counterY = 80;
-        } else { self.drawTextFit(dc, 140 + dx, 28 + dy, title, Graphics.COLOR_WHITE, 180); }
+        } else { self.drawTextFit(dc, 140 + dx, 36 + dy, title, Graphics.COLOR_WHITE, 180); counterY = 64; }
         self.drawTextFit(dc, 140 + dx, counterY + dy, ((f[2] as Lang.Number) + 1).toString() + "/" + f[1].size().toString(), Graphics.COLOR_LT_GRAY, 110);
         for (var offset = -1; offset <= 1; offset += 1) {
             var count = f[1].size();

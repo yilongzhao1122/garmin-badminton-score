@@ -18,7 +18,7 @@ for p in (ROOT/'resources/strings').glob('*.xml'):
 chars=sorted(chars,key=ord)
 out=ROOT/'resources/fonts';out.mkdir(exist_ok=True)
 metrics={}
-for size,line_height,base,name,key in [(16,22,17,'cn16','31')]:
+for size,line_height,base,name,key in [(16,22,17,'cn16','31'),(19,26,20,'cn19','32')]:
     f=ImageFont.truetype(args.font,size,index=args.index)
     cell=size+4;columns=256//cell;rows=math.ceil(len(chars)/columns);height=rows*cell
     atlas=Image.new('RGBA',(256,height),(255,255,255,0));glyphs={};lines=[]
@@ -42,7 +42,7 @@ for size,line_height,base,name,key in [(16,22,17,'cn16','31')]:
     metrics[key]=dict(lineHeight=line_height,base=base,size=size,atlas=name+'.png',glyphs=glyphs)
     print(name,len(chars),'glyphs',atlas.size,'1-bit glyph area <=',256*height//8,'bytes before resource conversion')
 (ROOT/'design/font_metrics.json').write_text(json.dumps(metrics,ensure_ascii=False))
-(out/'fonts.xml').write_text('<fonts>\n  <font id="CnSmall" filename="cn16.fnt" antialias="false"/>\n</fonts>\n')
+(out/'fonts.xml').write_text('<fonts>\n  <font id="CnSmall" filename="cn16.fnt" antialias="false"/>\n  <font id="CnMenu" filename="cn19.fnt" antialias="false"/>\n</fonts>\n')
 collection=TTCollection(args.font,lazy=True)
 font=collection.fonts[args.index]
 notices=[]

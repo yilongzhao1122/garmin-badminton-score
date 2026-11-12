@@ -1,0 +1,8 @@
+<settings>
+  <setting propertyKey="@Properties.MenuFontSize" title="@Strings.MenuSizeTitle">
+    <settingConfig type="list">
+      <listEntry value="19">@Strings.MenuSizeLarge</listEntry>
+      <listEntry value="16">@Strings.MenuSizeCompact</listEntry>
+    </settingConfig>
+  </setting>
+</settings>

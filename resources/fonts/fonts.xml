@@ -1,3 +1,4 @@
 <fonts>
   <font id="CnSmall" filename="cn16.fnt" antialias="false"/>
+  <font id="CnMenu" filename="cn19.fnt" antialias="false"/>
 </fonts>

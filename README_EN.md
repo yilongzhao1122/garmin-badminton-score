@@ -8,7 +8,7 @@ A five-button badminton watch app for Garmin Fēnix 6X Pro / Solar.
 
 [中文](README.md) · **English**
 
-[![Version](https://img.shields.io/badge/source-v0.9.0-00b96b)](https://github.com/yilongzhao1122/garmin-badminton-score/releases/latest)
+[![Version](https://img.shields.io/badge/source-v0.10.0-00b96b)](https://github.com/yilongzhao1122/garmin-badminton-score/releases/latest)
 [![Target](https://img.shields.io/badge/device-fenix6xpro-333333)](manifest.xml)
 [![License](https://img.shields.io/badge/code-MIT-blue)](LICENSE)
 
@@ -26,17 +26,21 @@ A five-button badminton watch app for Garmin Fēnix 6X Pro / Solar.
 - **Complete match flow**: game checkpoints, next-game service setup, win/encouragement effects, final save or discard.
 - **Chinese nested menus** with wrapping navigation, editable service, undo, scoring lock, activity controls and clock.
 - **Activity data**: when recording is enabled, read heart rate, calories and duration; save an ordinary FIT activity for watch-to-Connect synchronization.
-- **Lightweight drawing**: courts and results use primitives, with one Chinese bitmap font and no full-screen background images.
+- **Lightweight drawing**: courts and results use primitives, with cached 16px label and 19px menu fonts and no full-screen background images.
 
 The **watch menus are Chinese**. This repository provides full Chinese and English documentation; see the English guide's menu-label glossary.
+
+Menus default to 19px. A Connect IQ phone setting selects 19px or 16px without changing the match. See [Connect IQ submission and phone settings](docs/CONNECT_IQ_EN.md).
+
+![Menu size comparison, not device screenshots](docs/assets/menu-size.png)
 
 ## Downloads and installation
 
 | File | Purpose |
 | --- | --- |
-| [Source ZIP](https://github.com/yilongzhao1122/garmin-badminton-score/releases/latest/download/garmin-badminton-score-v0.9.0-source.zip) | Complete project to build with your own SDK and key |
-| [Offline English guide](https://github.com/yilongzhao1122/garmin-badminton-score/releases/latest/download/garmin-badminton-score-v0.9.0-guide-en.html) | Standalone HTML with embedded illustrations |
-| [Offline Chinese guide](https://github.com/yilongzhao1122/garmin-badminton-score/releases/latest/download/garmin-badminton-score-v0.9.0-guide-cn.html) | Standalone Chinese instructions |
+| [Source ZIP](https://github.com/yilongzhao1122/garmin-badminton-score/releases/latest/download/garmin-badminton-score-v0.10.0-source.zip) | Complete project to build with your own SDK and key |
+| [Offline English guide](https://github.com/yilongzhao1122/garmin-badminton-score/releases/latest/download/garmin-badminton-score-v0.10.0-guide-en.html) | Standalone HTML with embedded illustrations |
+| [Offline Chinese guide](https://github.com/yilongzhao1122/garmin-badminton-score/releases/latest/download/garmin-badminton-score-v0.10.0-guide-cn.html) | Standalone Chinese instructions |
 | [SHA256SUMS.txt](https://github.com/yilongzhao1122/garmin-badminton-score/releases/latest/download/SHA256SUMS.txt) | Download checksums |
 
 **This is a source release without a precompiled PRG.** Install Garmin's official Monkey C extension and SDK, download `fenix6xpro`, and run `Monkey C: Verify Installation`. Open the project root in VS Code, configure your own Developer Key, then open source/BadmintonApp.mc → **Ctrl+F5 → fenix6xpro**.
@@ -60,7 +64,7 @@ UP/DOWN do not score on data pages. Scoring lock and activity pause are independ
 ## Start, play and save
 
 1. Hold 2 → 新建比赛 (New match). Choose mode, points, match format, service setup and whether to record activity.
-2. Press 4 to start a rally and see the court. After each rally, press 2 or3 to score and return to the scoreboard, then4 to continue.
+2. Press 4 to start a rally and see the court. After each rally, press 2 or 3 to score and return to the scoreboard, then4 to continue.
 3. At a game end while the match continues:4 → Save game? → Start next game? → Service setup → 0:0 ready.
 4. No at the next-game question preserves the terminal score. Press 4 to re-enter. Setup does not clear scores until the receiver is confirmed.
 5. At match end:4 → Result effect → Save match? → 0:0 ready. The app stays open for another match or new configuration.
@@ -93,7 +97,7 @@ node tools/check_performance.cjs
 node tools/check_serve_ui.cjs
 ```
 
-**160 Node logic / mocked-API checks pass**;25 native-format Run No Evil functions are supplied. These checks do not replace Garmin SDK compilation, official simulator execution, device heap measurements or real FIT/Connect acceptance. See [Validation](docs/VALIDATION_EN.md).
+**166 Node logic / mocked-API checks pass**;25 native-format Run No Evil functions are supplied. These checks do not replace Garmin SDK compilation, official simulator execution, device heap measurements or real FIT/Connect acceptance. See [Validation](docs/VALIDATION_EN.md).
 
 Read [Contributing](docs/CONTRIBUTING_EN.md), [Architecture](docs/ARCHITECTURE_EN.md) and [Publication](docs/PUBLISH_EN.md) for development and release details.
 

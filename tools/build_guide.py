@@ -73,8 +73,8 @@ css='''*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;backgro
 nav='<nav><strong>'+('Contents' if english else '目录')+'</strong><br>'+''.join('<a href="#'+anchor+'">'+inline(title)+'</a>' for anchor,title in toc)+'</nav>'
 # Put navigation after the document title.
 parts.insert(1,nav)
-title='Garmin Badminton Score v0.9.0 — User Guide' if english else '羽毛球计分器 v0.9.0 操作指南'
-footer='v0.9.0 · Illustrations are not native screenshots. See the project validation report.' if english else 'v0.9.0 · 本文图片为设计示意；验证范围请参阅项目验证报告。'
+title='Garmin Badminton Score v0.10.0 — User Guide' if english else '羽毛球计分器 v0.10.0 操作指南'
+footer='v0.10.0 · Illustrations are not native screenshots. See the project validation report.' if english else 'v0.10.0 · 本文图片为设计示意；验证范围请参阅项目验证报告。'
 page='<!doctype html><html lang="'+('en' if english else 'zh-CN')+'"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'+title+'</title><style>'+css+'</style></head><body><main>'+''.join(parts)+'<footer>'+footer+'</footer></main></body></html>'
 out=ROOT/f'docs/USER_GUIDE_{lang}.html';out.write_text(page)
 print(f'{out}: {len(toc)} sections, 2 embedded PNGs, {out.stat().st_size:,} bytes')

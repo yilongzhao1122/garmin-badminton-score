@@ -1,0 +1,5 @@
+<strings>
+  <string id="MenuSizeTitle">Menu text size</string>
+  <string id="MenuSizeLarge">Large (19 px)</string>
+  <string id="MenuSizeCompact">Compact (16 px)</string>
+</strings>

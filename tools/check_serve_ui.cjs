@@ -34,9 +34,9 @@ function adapt(file){let source=fs.readFileSync(path.join(root,file),'utf8').rep
  }
  chunks.push(source.slice(cursor));return chunks.join('\n').replace(/Attention has :vibrate/g,'typeof Attention.vibrate === "function"')
   .replace(/method\(:(\w+)\)/g,'this.$1.bind(this)').replace(/\.size\(\)/g,'.length').replace(/\.add\(/g,'.push(').replace(/\(:test\)/g,'');}
-let time=1000,exits=0,storageFailure=null,resourceLoads=0;const storage=new Map();
+let time=1000,exits=0,storageFailure=null,resourceLoads=0;const storage=new Map(),properties=new Map();
 const WatchUi={View:Base,BehaviorDelegate:Base,MenuItem:Item,SLIDE_IMMEDIATE:0,
- pushView(view,delegate){stack.push({view,delegate});},popView(){assert(stack.length);stack.pop();},requestUpdate(){},loadResource(id){resourceLoads++;return id===30||id===31?id:{};}};
+ pushView(view,delegate){stack.push({view,delegate});},popView(){assert(stack.length);stack.pop();},requestUpdate(){},loadResource(id){resourceLoads++;return id===30||id===31||id===32?id:{};}};
 class Session{constructor(){this.active=false;this.saves=0;this.discards=0;this.failStart=false;this.failSave=false;this.failDiscard=false;this.fields=[];}
  createField(name,id,type,options){assert(this.fields.length<16,'developer-field count limit');assert(!this.fields.some(f=>f.id===id));const field={name,id,type,options,value:null,setData(value){assert(Number.isInteger(value));assert(value>=0&&value<=(type===2?254:4294967294));this.value=value;}};this.fields.push(field);return field;}
  isRecording(){return this.active;}start(){if(this.failStart)return false;this.active=true;return true;}
@@ -47,11 +47,11 @@ class Backend{constructor(){this.creates=0;this.session=null;this.failCreate=fal
  writeSummary(e,r,end){if(this.failSummary)throw Error('summary');this.matchFields.writeSummary(e,r,end);}
  info(){return null;}}
 const nativeSessions=[];
-const context=vm.createContext({Activity:{SPORT_GENERIC:0,SUB_SPORT_GENERIC:0,getActivityInfo:()=>null},ActivityRecording:{createSession(){const s=new Session();nativeSessions.push(s);return s;}},FitContributor:{DATA_TYPE_UINT8:2,DATA_TYPE_UINT32:6,MESG_TYPE_RECORD:20,MESG_TYPE_SESSION:18},WatchUi,Application:{AppBase:Base},Timer:{Timer:class{constructor(){this.active=false;this.interval=0;}start(callback,interval,repeat){this.active=true;this.interval=interval;}stop(){this.active=false;}}},Attention:{},
+const context=vm.createContext({Properties:{getValue:k=>{if(!properties.has(k))throw Error("missing property");return properties.get(k);}},Activity:{SPORT_GENERIC:0,SUB_SPORT_GENERIC:0,getActivityInfo:()=>null},ActivityRecording:{createSession(){const s=new Session();nativeSessions.push(s);return s;}},FitContributor:{DATA_TYPE_UINT8:2,DATA_TYPE_UINT32:6,MESG_TYPE_RECORD:20,MESG_TYPE_SESSION:18},WatchUi,Application:{AppBase:Base},Timer:{Timer:class{constructor(){this.active=false;this.interval=0;}start(callback,interval,repeat){this.active=true;this.interval=interval;}stop(){this.active=false;}}},Attention:{},
  System:{getTimer:()=>time,getClockTime:()=>({hour:15,min:42,sec:8}),exit:()=>exits++},GarminRecordingBackend:Backend,
  Storage:{getValue:k=>storage.get(k)??null,setValue:(k,v)=>{if(storageFailure===k)throw Error('store');storage.set(k,JSON.parse(JSON.stringify(v)));},
-  deleteValue:k=>{if(storageFailure===k)throw Error('delete');storage.delete(k);}},Test:{assertEqual:(a,b)=>assert.equal(a,b)},Rez:{Drawables:{CourtBackground:1},Fonts:{CnText:30,CnSmall:31}}});
-vm.runInContext('String.prototype.equals=function(v){return this.toString()===v;};Number.prototype.toNumber=function(){return Math.trunc(Number(this));};Number.prototype.format=function(p){if(p!=="%02d")throw Error(p);return String(this).padStart(2,"0");};',context);
+  deleteValue:k=>{if(storageFailure===k)throw Error('delete');storage.delete(k);}},Test:{assertEqual:(a,b)=>assert.equal(a,b)},Rez:{Drawables:{CourtBackground:1},Fonts:{CnText:30,CnSmall:31,CnMenu:32}}});
+vm.runInContext('String.prototype.toCharArray=function(){return [...this.toString()];};String.prototype.equals=function(v){return this.toString()===v;};Number.prototype.toNumber=function(){return Math.trunc(Number(this));};Number.prototype.format=function(p){if(p!=="%02d")throw Error(p);return String(this).padStart(2,"0");};',context);
 for(const file of ['ScoreEngine','MatchReport','GameCheckpoints','MatchFitFields','RecordingController','PerformanceStats','ServeUi','DataPagesUi','CourtUi','ChineseFonts','BadmintonApp','ScoreDelegate','MatchMenu','ScoreView']){
  vm.runInContext(adapt('source/'+file+'.mc')+'\nthis.'+file+'Class=typeof '+file+'!=="undefined"?'+file+':null;',context);
 }
@@ -66,7 +66,7 @@ function open(a){context.showScoreMenu(a);return stack.at(-1).view;}
 function choose(menu,id,value){const f=menu.frame(),index=f[1].findIndex(r=>r[1]===id&&(arguments.length<3||r[2]===value));assert(index>=0,`Missing ${id} in ${f[0]}`);f[2]=index;menu.select();}
 function key(input,name){time+=500;return input[name]();}
 const packed=a=>JSON.stringify(a.engine.pack());
-let passed=0;function test(name,fn){stack.length=0;storage.clear();storageFailure=null;exits=0;time+=1000;fn();passed++;process.stdout.write('PASS '+name+'\n');}
+let passed=0;function test(name,fn){stack.length=0;storage.clear();properties.clear();storageFailure=null;exits=0;time+=1000;fn();passed++;process.stdout.write('PASS '+name+'\n');}
 function openNew(menu,keep=true){choose(menu,'new');choose(menu,'settle',keep);}
 function configureNew(menu,mode=1,points=21,record=false){openNew(menu);choose(menu,'newMode',mode);choose(menu,'newPoints');
  if(points!==21){menu.back();choose(menu,'newPoints',menu.frame()[1].find(r=>r[2][0]===points)[2]);}
@@ -284,8 +284,8 @@ test('catchable optional export failure keeps ordinary session instead of discar
 test('mock hardware rejects a seventeenth field so byte-only checks cannot hide the regression',()=>{
  const s=new Session();for(let i=0;i<16;i++)s.createField('field'+i,i,2,{mesgType:18});
  assert.throws(()=>s.createField('too_many',16,2,{mesgType:18}),/developer-field count limit/);});
-test('one font resource is loaded and shared by both label sizes',()=>{
- const before=resourceLoads,a=app();assert.equal(resourceLoads-before,1);assert.equal(a.fonts.normal,a.fonts.small);});
+test('small labels and larger menus each cache one font object',()=>{
+ const before=resourceLoads,a=app();assert.equal(resourceLoads-before,2);assert.equal(a.fonts.small,31);assert.equal(a.fonts.normal,32);assert.equal(a.fonts.menuSize,19);});
 test('terminal game START opens save question with YES selected, preserving scoreboard',()=>{
  const a=stableApp();finishGame(a);const before=packed(a),m=gameFlow(a);
  assert.equal(m.frame()[3],'roundSave');assert.equal(m.frame()[1][m.frame()[2]][0],'是');assert.equal(packed(a),before);});
@@ -393,6 +393,33 @@ class Dc{constructor(){this.commands=[];this.foreground=1;this.background=0;}
 function render(view){const dc=new Dc();view.onUpdate(dc);return dc.commands;}
 function scene(a){return render(new context.ScoreViewClass(a));}
 function greenMarkers(c){return c.filter(x=>x.op==='fillCircle'&&x.color===2);}
+test('startup reads saved phone preference and defaults to the enlarged menu',()=>{
+ const a=app();a.onStart(null);assert.equal(a.fonts.menuSize,19);
+ properties.set('MenuFontSize',16);const b=app();b.onStart(null);assert.equal(b.fonts.menuSize,16);assert.equal(b.fonts.normal,31);
+ properties.set('MenuFontSize',19);const c=app();c.onStart(null);assert.equal(c.fonts.normal,32);
+});
+test('live phone changes redraw menus without touching a match or activity session',()=>{
+ const a=stableApp();a.startRally();a.award(0);a.award(1);const score=packed(a),report=JSON.stringify(a.report.pack()),saved=JSON.stringify([...storage]),session=a.recorder.backend.session,before=resourceLoads;
+ properties.set('MenuFontSize',16);a.onSettingsChanged();assert.equal(a.fonts.normal,31);
+ properties.set('MenuFontSize',19);a.onSettingsChanged();assert.equal(a.fonts.normal,32);
+ assert.equal(packed(a),score);assert.equal(JSON.stringify(a.report.pack()),report);assert.equal(JSON.stringify([...storage]),saved);assert.equal(a.recorder.backend.session,session);assert.equal(resourceLoads,before);
+});
+test('missing, invalid or mistyped phone values safely fall back to 19px',()=>{
+ const a=app();for(const v of [null,999,-1,'16',true]){properties.set('MenuFontSize',v);a.onSettingsChanged();assert.equal(a.fonts.menuSize,19);}properties.clear();a.onSettingsChanged();assert.equal(a.fonts.menuSize,19);
+});
+test('every ordinary menu label uses the 19px font by default',()=>{
+ const a=app(),m=open(a);const inspect=()=>assert(render(m).filter(c=>c.op==='text').every(c=>c.args[2]===32));inspect();
+ for(const id of ['match','pages','activity','keys','exit']){choose(m,id);inspect();m.back();}choose(m,'new');inspect();
+});
+test('long menu text wraps at the selected size instead of silently shrinking',()=>{
+ const a=app(),m=open(a),dc=new Dc();m.drawTextFit(dc,140,140,'是否保存当前对局结果是否保存当前对局结果',1,130);
+ const rows=dc.commands.filter(c=>c.op==='text');assert.equal(rows.length,2);assert(rows.every(c=>c.args[2]===32&&c.args[4]<=130));
+});
+test('menu glyphs fit the circular face after the 3px increase',()=>{
+ const a=app(),m=open(a);const inspect=()=>{for(const t of render(m).filter(c=>c.op==='text')){const [x,y,f,text,width]=t.args;let pen=x-width/2;
+  for(const ch of text){const g=fontMetrics[f].glyphs[ch.codePointAt(0)];if(g.width&&g.height)for(const px of [pen+g.xoffset,pen+g.xoffset+g.width])for(const py of [y+g.yoffset,y+g.yoffset+g.height])assert((px-140)**2+(py-140)**2<=140**2,'Clipped glyph in '+text);pen+=g.xadvance;}}};inspect();
+ for(const id of ['match','pages','activity','keys','exit']){choose(m,id);inspect();m.back();}choose(m,'new');inspect();
+});
 test('single/double court markers keep own-right mirroring and one colored server',()=>{
  const a=app();a.recordWanted=false;a.startRally();assert.deepEqual(greenMarkers(scene(a))[0].args,[168,188,9]);a.award(1);a.startRally();assert.deepEqual(greenMarkers(scene(a))[0].args,[168,112,9]);
  a.showPage(0);a.newMatch(21,30,3,false,1,0,2);a.award(0);a.startRally();const c=scene(a);assert.deepEqual(greenMarkers(c)[0].args,[112,188,16]);assert.equal(c.filter(x=>x.op==='text'&&/^[AB][12]$/.test(x.args[3])).length,4);});
@@ -440,7 +467,7 @@ if(process.argv.includes('--preview')){
  const scenes={};const a=app();a.newMatch(21,30,3,true,1,0,2);a.startRally();a.award(0);a.recorder.elapsedMs=890000;a.stats.heartRate=135;a.stats.averageHeartRate=128;a.stats.maxHeartRate=158;a.stats.calories=76;
  scenes.score=scene(a);a.startRally();scenes.doubles_1_0=scene(a);a.award(1);a.startRally();scenes.doubles_1_1=scene(a);a.showPage(1);scenes.performance=scene(a);a.showPage(2);scenes.clock=scene(a);
  const s=app();s.recordWanted=false;s.startRally();scenes.singles_0_0=scene(s);s.award(1);s.startRally();scenes.singles_0_1=scene(s);
- const m=open(a);m.frame()[2]=1;scenes.menu_root=render(m);a.lastMatch=[a.engine.pack(),true,890000];choose(m,'match');m.frame()[2]=1;scenes.menu_match=render(m);m.back();choose(m,'keys');choose(m,'lock');scenes.menu_locked=render(m);choose(m,'unlock');scenes.menu_unlocked=render(m);m.back();choose(m,'activity');scenes.menu_activity=render(m);m.back();choose(m,'exit');m.frame()[2]=1;scenes.menu_exit=render(m);choose(m,'dropConfirm');scenes.menu_discard=render(m);m.root();choose(m,'new');scenes.menu_new_save=render(m);m.back();choose(m,'finish');scenes.menu_finish=render(m);m.root();m.frame()[2]=5;scenes.menu_finish_entry=render(m);
+ const m=open(a);m.frame()[2]=1;scenes.menu_root=render(m);properties.set('MenuFontSize',16);a.onSettingsChanged();scenes.menu_root_compact=render(m);properties.set('MenuFontSize',19);a.onSettingsChanged();a.lastMatch=[a.engine.pack(),true,890000];choose(m,'match');m.frame()[2]=1;scenes.menu_match=render(m);m.back();choose(m,'keys');choose(m,'lock');scenes.menu_locked=render(m);choose(m,'unlock');scenes.menu_unlocked=render(m);m.back();choose(m,'activity');scenes.menu_activity=render(m);m.back();choose(m,'exit');m.frame()[2]=1;scenes.menu_exit=render(m);choose(m,'dropConfirm');scenes.menu_discard=render(m);m.root();choose(m,'new');scenes.menu_new_save=render(m);m.back();choose(m,'finish');scenes.menu_finish=render(m);m.root();m.frame()[2]=5;scenes.menu_finish_entry=render(m);
  stack.length=0;const g=stableApp();g.startRally();for(let i=0;i<18;i++)g.award(1);for(let i=0;i<21;i++)g.award(0);
  g.recorder.elapsedMs=840000;g.report.gameMs[0]=780000;g.report.totalMs=840000;scenes.game_over=scene(g);const gm=gameFlow(g);
  scenes.round_save=render(gm);choose(gm,'roundKeep',true);scenes.round_next=render(gm);choose(gm,'roundNext',true);scenes.round_team=render(gm);gm.close();

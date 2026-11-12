@@ -70,7 +70,7 @@ def watch(canvas, center_xy, scene, scale=1.12):
         center(d,(x+side*20,y),str(number),15,'#4c6257',True)
 
 out=Image.new('RGB',(1380,1250),BG); d=ImageDraw.Draw(out)
-d.text((40,24),'羽毛球计分 v0.9.0 · 局末4键闭环与轻量结果动画',font=font(27,True),fill='#193629')
+d.text((40,24),'羽毛球计分 v0.10.0 · 19px菜单与完整局末流程',font=font(27,True),fill='#193629')
 d.text((40,72),'默认选“是”；2/3选择、4确认、5返回。结果动画为代码线条，无图片文件。',font=font(18),fill='#4b6255')
 items=[(240,326,'game_over','本局结束，按4继续','保留比分，进入局末选择'),
  (690,326,'round_save','先选择是否保存本局','默认“是”，保存表内比分/用时检查点'),
@@ -96,3 +96,12 @@ cases.save(ROOT/'docs/assets/courts.png')
 
 print(path)
 print(ROOT/'docs/assets/courts.png')
+
+comparison=Image.new('RGB',(1120,660),BG);d=ImageDraw.Draw(comparison)
+d.text((35,22),'菜单字号 · 手机设置可切换，默认19px',font=font(26,True),fill='#193629')
+for x,key,title in [(280,'menu_root_compact','紧凑16px（手机可选）'),(840,'menu_root','默认19px（增大3px）')]:
+    watch(comparison,(x,290),key,1.08)
+    center(d,(x,505),title,22,bold=True)
+    center(d,(x,545),'标题、选项、计数和按键提示统一字号',17,color='#4c6257')
+d.text((35,605),'电脑绘制示意，非Garmin模拟器或真机截图；请在目标手表验收实际字体与内存。',font=font(16),fill='#607568')
+comparison.save(ROOT/'docs/assets/menu-size.png')

@@ -13,7 +13,7 @@
 | GarminRecordingBackend | 原生ActivityRecording与活动数据适配 |
 | MatchReport / GameCheckpoints | 每局用时、整场汇总与固定最多3局检查点 |
 | PerformanceStats / DataPagesUi | 心率、热量、时长与时钟 |
-| ChineseFonts | 缓存单套16px点阵字库 |
+| ChineseFonts | 缓存16px标签与19px菜单字库 |
 | MatchFitFields | 可选自定义FIT字段实现，公开默认关闭 |
 
 ## 状态提交

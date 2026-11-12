@@ -21,7 +21,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\PUBLISH.ps1
 
 The execution-policy argument applies only to this process. The script checks the account and creates/uploads a new public repository. It preserves local files on failure and never overwrites an existing remote project.
 
-4. Inspect Logic checks and Source release in Actions. The latter runs 160 checks before packaging the source, both offline guides and SHA256, and creates the versioned Release. An existing Release is preserved. Disabled workflows or missing permissions must be resolved from the actual GitHub error; starting a workflow does not prove publication.
+4. Inspect Logic checks and Source release in Actions. The latter runs 166 checks before packaging the source, both offline guides and SHA256, and creates the versioned Release. An existing Release is preserved. Disabled workflows or missing permissions must be resolved from the actual GitHub error; starting a workflow does not prove publication.
 5. Verify Release assets, download and checksums. No precompiled PRG is provided.
 
 The script has been statically inspected, but was not executed against an authenticated GitHub repository in the preparation environment. If publication partly succeeds, keep the repository and local project, and use the non-sensitive error to continue rather than rerunning blindly.

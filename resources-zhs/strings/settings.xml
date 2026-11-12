@@ -1,0 +1,5 @@
+<strings>
+  <string id="MenuSizeTitle">菜单字号</string>
+  <string id="MenuSizeLarge">大号（19像素）</string>
+  <string id="MenuSizeCompact">紧凑（16像素）</string>
+</strings>

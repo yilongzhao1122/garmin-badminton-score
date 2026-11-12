@@ -1,5 +1,7 @@
 import Toybox.Application;
 import Toybox.Application.Storage;
+import Toybox.Application.Properties;
+import Toybox.Lang;
 import Toybox.System;
 import Toybox.WatchUi;
 import Toybox.Attention;
@@ -30,6 +32,7 @@ class BadmintonApp extends Application.AppBase {
         checkpoints = new GameCheckpoints();
     }
     function onStart(state) {
+        self.readSettings();
         try {
             lastMatch = Storage.getValue("last-match");
             var saved = Storage.getValue("match-v1");
@@ -45,6 +48,18 @@ class BadmintonApp extends Application.AppBase {
                 checkpoints.restore(Storage.getValue("game-saves")); checkpoints.reconcile(engine);
             } else { notice = "4开球 长按2菜单"; }
         } catch (e) { notice = "恢复失败"; }
+    }
+    function readSettings() {
+        var size = 19;
+        try {
+            var value = Properties.getValue("MenuFontSize");
+            if (value instanceof Lang.Number && (value == 16 || value == 19)) { size = value; }
+        } catch (e) {}
+        fonts.setMenuSize(size);
+    }
+    function onSettingsChanged() {
+        self.readSettings();
+        WatchUi.requestUpdate();
     }
     function onStop(state) {
         // Do not recreate the deleted active match after a deliberate finish.

@@ -13,7 +13,7 @@
 | GarminRecordingBackend | Native ActivityRecording and activity-information adapter |
 | MatchReport / GameCheckpoints | Game durations, match summary and at most three checkpoints |
 | PerformanceStats / DataPagesUi | Heart rate, calories, duration and clock |
-| ChineseFonts | Cached single 16 px bitmap font |
+| ChineseFonts | Cached 16px labels and 19px menus |
 | MatchFitFields | Optional custom FIT exporter, disabled in the public default |
 
 ## State and persistence
