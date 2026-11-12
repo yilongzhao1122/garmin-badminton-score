@@ -1,0 +1,15 @@
+<fitContributions>
+  <fitField id="4" displayInChart="false" displayInActivitySummary="true" sortOrder="4" precision="0" dataLabel="@Strings.FitLabel4" unitLabel="@Strings.FitSeconds" />
+  <fitField id="5" displayInChart="false" displayInActivitySummary="true" sortOrder="5" precision="0" dataLabel="@Strings.FitLabel5" unitLabel="@Strings.FitCode" />
+  <fitField id="6" displayInChart="false" displayInActivitySummary="true" sortOrder="6" precision="0" dataLabel="@Strings.FitLabel6" unitLabel="@Strings.FitPoints" />
+  <fitField id="7" displayInChart="false" displayInActivitySummary="true" sortOrder="7" precision="0" dataLabel="@Strings.FitLabel7" unitLabel="@Strings.FitPoints" />
+  <fitField id="8" displayInChart="false" displayInActivitySummary="true" sortOrder="8" precision="0" dataLabel="@Strings.FitLabel8" unitLabel="@Strings.FitSeconds" />
+  <fitField id="9" displayInChart="false" displayInActivitySummary="true" sortOrder="9" precision="0" dataLabel="@Strings.FitLabel9" unitLabel="@Strings.FitPoints" />
+  <fitField id="10" displayInChart="false" displayInActivitySummary="true" sortOrder="10" precision="0" dataLabel="@Strings.FitLabel10" unitLabel="@Strings.FitPoints" />
+  <fitField id="11" displayInChart="false" displayInActivitySummary="true" sortOrder="11" precision="0" dataLabel="@Strings.FitLabel11" unitLabel="@Strings.FitSeconds" />
+  <fitField id="12" displayInChart="false" displayInActivitySummary="true" sortOrder="12" precision="0" dataLabel="@Strings.FitLabel12" unitLabel="@Strings.FitPoints" />
+  <fitField id="13" displayInChart="false" displayInActivitySummary="true" sortOrder="13" precision="0" dataLabel="@Strings.FitLabel13" unitLabel="@Strings.FitPoints" />
+  <fitField id="14" displayInChart="false" displayInActivitySummary="true" sortOrder="14" precision="0" dataLabel="@Strings.FitLabel14" unitLabel="@Strings.FitSeconds" />
+  <fitField id="15" displayInChart="false" displayInActivitySummary="true" sortOrder="15" precision="0" dataLabel="@Strings.FitLabel15" unitLabel="@Strings.FitGames" />
+  <fitField id="16" displayInChart="false" displayInActivitySummary="true" sortOrder="16" precision="0" dataLabel="@Strings.FitLabel16" unitLabel="@Strings.FitCode" />
+</fitContributions>

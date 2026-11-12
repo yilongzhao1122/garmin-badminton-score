@@ -1,0 +1,21 @@
+name: Logic checks
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  mocked-logic:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node tools/check_engine.cjs
+      - run: node tools/check_recording.cjs
+      - run: node tools/check_performance.cjs
+      - run: node tools/check_serve_ui.cjs
+      - name: Explain coverage
+        run: echo 'These checks use mocked APIs. Native SDK, device FIT and sync require separate validation.'

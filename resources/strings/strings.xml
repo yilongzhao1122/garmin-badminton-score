@@ -1,0 +1,20 @@
+<strings>
+  <string id="AppName">羽毛球计分</string>
+  <string id="FitLabel4">对局用时</string>
+  <string id="FitLabel5">结束 0中1完2停</string>
+  <string id="FitLabel6">第1局我方</string>
+  <string id="FitLabel7">第1局对方</string>
+  <string id="FitLabel8">第1局用时</string>
+  <string id="FitLabel9">第2局我方</string>
+  <string id="FitLabel10">第2局对方</string>
+  <string id="FitLabel11">第2局用时</string>
+  <string id="FitLabel12">第3局我方</string>
+  <string id="FitLabel13">第3局对方</string>
+  <string id="FitLabel14">第3局用时</string>
+  <string id="FitLabel15">已开局数</string>
+  <string id="FitLabel16">计时完整 1是0否</string>
+  <string id="FitSeconds">秒</string>
+  <string id="FitPoints">分</string>
+  <string id="FitGames">局</string>
+  <string id="FitCode">编码</string>
+</strings>

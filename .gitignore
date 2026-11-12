@@ -1,0 +1,13 @@
+bin/
+dist/
+*.prg
+*.prg.debug.xml
+*.iq
+*.pem
+*.key
+*.der
+developer_key*
+Monkey_C_key/
+.env*
+__pycache__/
+.DS_Store

@@ -1,0 +1,3757 @@
+{
+  "fontHeights": [
+    20,
+    22,
+    24,
+    28,
+    34,
+    66,
+    104
+  ],
+  "scenes": {
+    "score": [
+      {
+        "op": "clear",
+        "args": [],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          11,
+          31,
+          "记录 14:50",
+          77,
+          22
+        ],
+        "color": 2,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          39,
+          31,
+          "双打 第1局 局数0-0",
+          137,
+          22
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          84,
+          71,
+          31,
+          "我方",
+          32,
+          22
+        ],
+        "color": 2,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          196,
+          71,
+          31,
+          "对方",
+          32,
+          22
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          84,
+          103,
+          5,
+          "1",
+          20,
+          66
+        ],
+        "color": 2,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          196,
+          103,
+          5,
+          "0",
+          35,
+          66
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "fillRect",
+        "args": [
+          38,
+          80,
+          5,
+          5
+        ],
+        "color": 5,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          42,
+          76,
+          42,
+          88
+        ],
+        "color": 5,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          43,
+          77,
+          43,
+          87
+        ],
+        "color": 5,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          44,
+          78,
+          44,
+          86
+        ],
+        "color": 5,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          45,
+          79,
+          45,
+          85
+        ],
+        "color": 5,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          46,
+          80,
+          46,
+          84
+        ],
+        "color": 5,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          47,
+          81,
+          47,
+          83
+        ],
+        "color": 5,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          48,
+          82,
+          48,
+          82
+        ],
+        "color": 5,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          140,
+          78,
+          140,
+          170
+        ],
+        "color": 4,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          186,
+          31,
+          "2我方 3对方 5撤销",
+          131,
+          22
+        ],
+        "color": 3,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          211,
+          31,
+          "心率-- 热量76",
+          98,
+          22
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          236,
+          31,
+          "4开球 长按2菜单",
+          118,
+          22
+        ],
+        "color": 3,
+        "background": 0
+      }
+    ],
+    "doubles_1_0": [
+      {
+        "op": "clear",
+        "args": [],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "rect",
+        "args": [
+          84,
+          80,
+          112,
+          140
+        ],
+        "color": 3,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          94,
+          80,
+          94,
+          220
+        ],
+        "color": 3,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          186,
+          80,
+          186,
+          220
+        ],
+        "color": 3,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          84,
+          90,
+          196,
+          90
+        ],
+        "color": 3,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          84,
+          210,
+          196,
+          210
+        ],
+        "color": 3,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          84,
+          134,
+          196,
+          134
+        ],
+        "color": 3,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          84,
+          166,
+          196,
+          166
+        ],
+        "color": 3,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          140,
+          80,
+          140,
+          134
+        ],
+        "color": 3,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          140,
+          166,
+          140,
+          220
+        ],
+        "color": 3,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          80,
+          150,
+          200,
+          150
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          80,
+          151,
+          200,
+          151
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          11,
+          31,
+          "记录 14:50",
+          77,
+          22
+        ],
+        "color": 2,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          39,
+          31,
+          "我方 1 : 0 对方",
+          103,
+          22
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          47,
+          101,
+          31,
+          "对方",
+          32,
+          22
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          47,
+          177,
+          31,
+          "我方",
+          32,
+          22
+        ],
+        "color": 2,
+        "background": 0
+      },
+      {
+        "op": "fillCircle",
+        "args": [
+          168,
+          188,
+          18
+        ],
+        "color": 0,
+        "background": 0
+      },
+      {
+        "op": "circle",
+        "args": [
+          168,
+          188,
+          16
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "circle",
+        "args": [
+          168,
+          188,
+          15
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          168,
+          177,
+          31,
+          "A2",
+          19,
+          22
+        ],
+        "color": 1,
+        "background": -1
+      },
+      {
+        "op": "fillCircle",
+        "args": [
+          112,
+          188,
+          18
+        ],
+        "color": 0,
+        "background": 0
+      },
+      {
+        "op": "fillCircle",
+        "args": [
+          112,
+          188,
+          16
+        ],
+        "color": 2,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          112,
+          177,
+          31,
+          "A1",
+          19,
+          22
+        ],
+        "color": 0,
+        "background": -1
+      },
+      {
+        "op": "fillCircle",
+        "args": [
+          112,
+          112,
+          18
+        ],
+        "color": 0,
+        "background": 0
+      },
+      {
+        "op": "circle",
+        "args": [
+          112,
+          112,
+          16
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "circle",
+        "args": [
+          112,
+          112,
+          15
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          112,
+          101,
+          31,
+          "B1",
+          20,
+          22
+        ],
+        "color": 1,
+        "background": -1
+      },
+      {
+        "op": "fillCircle",
+        "args": [
+          168,
+          112,
+          18
+        ],
+        "color": 0,
+        "background": 0
+      },
+      {
+        "op": "circle",
+        "args": [
+          168,
+          112,
+          16
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "circle",
+        "args": [
+          168,
+          112,
+          15
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          168,
+          101,
+          31,
+          "B2",
+          20,
+          22
+        ],
+        "color": 1,
+        "background": -1
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          235,
+          31,
+          "2/3加分 5返回",
+          101,
+          22
+        ],
+        "color": 3,
+        "background": 0
+      }
+    ],
+    "doubles_1_1": [
+      {
+        "op": "clear",
+        "args": [],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "rect",
+        "args": [
+          84,
+          80,
+          112,
+          140
+        ],
+        "color": 3,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          94,
+          80,
+          94,
+          220
+        ],
+        "color": 3,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          186,
+          80,
+          186,
+          220
+        ],
+        "color": 3,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          84,
+          90,
+          196,
+          90
+        ],
+        "color": 3,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          84,
+          210,
+          196,
+          210
+        ],
+        "color": 3,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          84,
+          134,
+          196,
+          134
+        ],
+        "color": 3,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          84,
+          166,
+          196,
+          166
+        ],
+        "color": 3,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          140,
+          80,
+          140,
+          134
+        ],
+        "color": 3,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          140,
+          166,
+          140,
+          220
+        ],
+        "color": 3,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          80,
+          150,
+          200,
+          150
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          80,
+          151,
+          200,
+          151
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          11,
+          31,
+          "记录 14:50",
+          77,
+          22
+        ],
+        "color": 2,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          39,
+          31,
+          "我方 1 : 1 对方",
+          103,
+          22
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          47,
+          101,
+          31,
+          "对方",
+          32,
+          22
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          47,
+          177,
+          31,
+          "我方",
+          32,
+          22
+        ],
+        "color": 2,
+        "background": 0
+      },
+      {
+        "op": "fillCircle",
+        "args": [
+          168,
+          188,
+          18
+        ],
+        "color": 0,
+        "background": 0
+      },
+      {
+        "op": "circle",
+        "args": [
+          168,
+          188,
+          16
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "circle",
+        "args": [
+          168,
+          188,
+          15
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          168,
+          177,
+          31,
+          "A2",
+          19,
+          22
+        ],
+        "color": 1,
+        "background": -1
+      },
+      {
+        "op": "fillCircle",
+        "args": [
+          112,
+          188,
+          18
+        ],
+        "color": 0,
+        "background": 0
+      },
+      {
+        "op": "circle",
+        "args": [
+          112,
+          188,
+          16
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "circle",
+        "args": [
+          112,
+          188,
+          15
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          112,
+          177,
+          31,
+          "A1",
+          19,
+          22
+        ],
+        "color": 1,
+        "background": -1
+      },
+      {
+        "op": "fillCircle",
+        "args": [
+          112,
+          112,
+          18
+        ],
+        "color": 0,
+        "background": 0
+      },
+      {
+        "op": "circle",
+        "args": [
+          112,
+          112,
+          16
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "circle",
+        "args": [
+          112,
+          112,
+          15
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          112,
+          101,
+          31,
+          "B1",
+          20,
+          22
+        ],
+        "color": 1,
+        "background": -1
+      },
+      {
+        "op": "fillCircle",
+        "args": [
+          168,
+          112,
+          18
+        ],
+        "color": 0,
+        "background": 0
+      },
+      {
+        "op": "fillCircle",
+        "args": [
+          168,
+          112,
+          16
+        ],
+        "color": 2,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          168,
+          101,
+          31,
+          "B2",
+          20,
+          22
+        ],
+        "color": 0,
+        "background": -1
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          235,
+          31,
+          "2/3加分 5返回",
+          101,
+          22
+        ],
+        "color": 3,
+        "background": 0
+      }
+    ],
+    "performance": [
+      {
+        "op": "clear",
+        "args": [],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          11,
+          31,
+          "记录 14:50",
+          77,
+          22
+        ],
+        "color": 2,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          39,
+          31,
+          "运动数据",
+          64,
+          22
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          84,
+          4,
+          "--",
+          37,
+          34
+        ],
+        "color": 2,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          132,
+          31,
+          "心率 次/分",
+          74,
+          22
+        ],
+        "color": 3,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          84,
+          159,
+          31,
+          "千卡",
+          32,
+          22
+        ],
+        "color": 3,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          196,
+          159,
+          31,
+          "运动时长",
+          64,
+          22
+        ],
+        "color": 3,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          84,
+          186,
+          31,
+          "76",
+          18,
+          22
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          196,
+          186,
+          31,
+          "14:50",
+          41,
+          22
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          213,
+          31,
+          "平均128 最高158",
+          122,
+          22
+        ],
+        "color": 3,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          237,
+          31,
+          "5比分 长按2菜单",
+          118,
+          22
+        ],
+        "color": 3,
+        "background": 0
+      }
+    ],
+    "clock": [
+      {
+        "op": "clear",
+        "args": [],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          11,
+          31,
+          "记录 14:50",
+          77,
+          22
+        ],
+        "color": 2,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          39,
+          31,
+          "当前时间",
+          64,
+          22
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          97,
+          4,
+          "15:42:08",
+          121,
+          34
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          141,
+          31,
+          "24小时制",
+          66,
+          22
+        ],
+        "color": 3,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          172,
+          31,
+          "时长14:50",
+          73,
+          22
+        ],
+        "color": 2,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          200,
+          31,
+          "我方 1 : 1 对方",
+          103,
+          22
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          234,
+          31,
+          "5比分 长按2菜单",
+          118,
+          22
+        ],
+        "color": 3,
+        "background": 0
+      }
+    ],
+    "singles_0_0": [
+      {
+        "op": "clear",
+        "args": [],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "rect",
+        "args": [
+          84,
+          80,
+          112,
+          140
+        ],
+        "color": 3,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          94,
+          80,
+          94,
+          220
+        ],
+        "color": 3,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          186,
+          80,
+          186,
+          220
+        ],
+        "color": 3,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          84,
+          90,
+          196,
+          90
+        ],
+        "color": 3,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          84,
+          210,
+          196,
+          210
+        ],
+        "color": 3,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          84,
+          134,
+          196,
+          134
+        ],
+        "color": 3,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          84,
+          166,
+          196,
+          166
+        ],
+        "color": 3,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          140,
+          80,
+          140,
+          134
+        ],
+        "color": 3,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          140,
+          166,
+          140,
+          220
+        ],
+        "color": 3,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          80,
+          150,
+          200,
+          150
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          80,
+          151,
+          200,
+          151
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          11,
+          31,
+          "仅计分",
+          48,
+          22
+        ],
+        "color": 3,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          39,
+          31,
+          "我方 0 : 0 对方",
+          103,
+          22
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          47,
+          101,
+          31,
+          "对方",
+          32,
+          22
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          47,
+          177,
+          31,
+          "我方",
+          32,
+          22
+        ],
+        "color": 2,
+        "background": 0
+      },
+      {
+        "op": "fillCircle",
+        "args": [
+          168,
+          188,
+          11
+        ],
+        "color": 0,
+        "background": 0
+      },
+      {
+        "op": "fillCircle",
+        "args": [
+          168,
+          188,
+          9
+        ],
+        "color": 2,
+        "background": 0
+      },
+      {
+        "op": "fillCircle",
+        "args": [
+          112,
+          112,
+          11
+        ],
+        "color": 0,
+        "background": 0
+      },
+      {
+        "op": "circle",
+        "args": [
+          112,
+          112,
+          9
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "circle",
+        "args": [
+          112,
+          112,
+          8
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          235,
+          31,
+          "2/3加分 5返回",
+          101,
+          22
+        ],
+        "color": 3,
+        "background": 0
+      }
+    ],
+    "singles_0_1": [
+      {
+        "op": "clear",
+        "args": [],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "rect",
+        "args": [
+          84,
+          80,
+          112,
+          140
+        ],
+        "color": 3,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          94,
+          80,
+          94,
+          220
+        ],
+        "color": 3,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          186,
+          80,
+          186,
+          220
+        ],
+        "color": 3,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          84,
+          90,
+          196,
+          90
+        ],
+        "color": 3,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          84,
+          210,
+          196,
+          210
+        ],
+        "color": 3,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          84,
+          134,
+          196,
+          134
+        ],
+        "color": 3,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          84,
+          166,
+          196,
+          166
+        ],
+        "color": 3,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          140,
+          80,
+          140,
+          134
+        ],
+        "color": 3,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          140,
+          166,
+          140,
+          220
+        ],
+        "color": 3,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          80,
+          150,
+          200,
+          150
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          80,
+          151,
+          200,
+          151
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          11,
+          31,
+          "仅计分",
+          48,
+          22
+        ],
+        "color": 3,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          39,
+          31,
+          "我方 0 : 1 对方",
+          103,
+          22
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          47,
+          101,
+          31,
+          "对方",
+          32,
+          22
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          47,
+          177,
+          31,
+          "我方",
+          32,
+          22
+        ],
+        "color": 2,
+        "background": 0
+      },
+      {
+        "op": "fillCircle",
+        "args": [
+          112,
+          188,
+          11
+        ],
+        "color": 0,
+        "background": 0
+      },
+      {
+        "op": "circle",
+        "args": [
+          112,
+          188,
+          9
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "circle",
+        "args": [
+          112,
+          188,
+          8
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "fillCircle",
+        "args": [
+          168,
+          112,
+          11
+        ],
+        "color": 0,
+        "background": 0
+      },
+      {
+        "op": "fillCircle",
+        "args": [
+          168,
+          112,
+          9
+        ],
+        "color": 2,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          235,
+          31,
+          "2/3加分 5返回",
+          101,
+          22
+        ],
+        "color": 3,
+        "background": 0
+      }
+    ],
+    "menu_root": [
+      {
+        "op": "clear",
+        "args": [],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          17,
+          31,
+          "比赛菜单",
+          64,
+          22
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          43,
+          31,
+          "2/7",
+          24,
+          22
+        ],
+        "color": 3,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          79,
+          31,
+          "新建比赛",
+          64,
+          22
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "fillRect",
+        "args": [
+          27,
+          125,
+          3,
+          30
+        ],
+        "color": 2,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          129,
+          31,
+          "比赛设置",
+          64,
+          22
+        ],
+        "color": 2,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          179,
+          31,
+          "数据页面",
+          64,
+          22
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          223,
+          31,
+          "2/3选择 4确定",
+          101,
+          22
+        ],
+        "color": 3,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          247,
+          31,
+          "5返回",
+          41,
+          22
+        ],
+        "color": 3,
+        "background": 0
+      }
+    ],
+    "menu_match": [
+      {
+        "op": "clear",
+        "args": [],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          17,
+          31,
+          "比赛设置",
+          64,
+          22
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          43,
+          31,
+          "2/3",
+          24,
+          22
+        ],
+        "color": 3,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          79,
+          31,
+          "修改接发球",
+          80,
+          22
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "fillRect",
+        "args": [
+          27,
+          125,
+          3,
+          30
+        ],
+        "color": 2,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          129,
+          31,
+          "各局比分",
+          64,
+          22
+        ],
+        "color": 2,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          179,
+          31,
+          "上场比赛",
+          64,
+          22
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          223,
+          31,
+          "2/3选择 4确定",
+          101,
+          22
+        ],
+        "color": 3,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          247,
+          31,
+          "5返回",
+          41,
+          22
+        ],
+        "color": 3,
+        "background": 0
+      }
+    ],
+    "menu_locked": [
+      {
+        "op": "clear",
+        "args": [],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          17,
+          31,
+          "按键已锁定",
+          80,
+          22
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          43,
+          31,
+          "2/2",
+          24,
+          22
+        ],
+        "color": 3,
+        "background": 0
+      },
+      {
+        "op": "fillRect",
+        "args": [
+          27,
+          125,
+          3,
+          30
+        ],
+        "color": 2,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          129,
+          31,
+          "锁定",
+          32,
+          22
+        ],
+        "color": 2,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          179,
+          31,
+          "解锁",
+          32,
+          22
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          223,
+          31,
+          "2/3选择 4确定",
+          101,
+          22
+        ],
+        "color": 3,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          247,
+          31,
+          "5返回",
+          41,
+          22
+        ],
+        "color": 3,
+        "background": 0
+      }
+    ],
+    "menu_unlocked": [
+      {
+        "op": "clear",
+        "args": [],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          17,
+          31,
+          "按键已解锁",
+          80,
+          22
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          43,
+          31,
+          "1/2",
+          24,
+          22
+        ],
+        "color": 3,
+        "background": 0
+      },
+      {
+        "op": "fillRect",
+        "args": [
+          27,
+          125,
+          3,
+          30
+        ],
+        "color": 2,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          129,
+          31,
+          "解锁",
+          32,
+          22
+        ],
+        "color": 2,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          179,
+          31,
+          "锁定",
+          32,
+          22
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          223,
+          31,
+          "2/3选择 4确定",
+          101,
+          22
+        ],
+        "color": 3,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          247,
+          31,
+          "5返回",
+          41,
+          22
+        ],
+        "color": 3,
+        "background": 0
+      }
+    ],
+    "menu_activity": [
+      {
+        "op": "clear",
+        "args": [],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          17,
+          31,
+          "记录中",
+          48,
+          22
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          43,
+          31,
+          "1/4",
+          24,
+          22
+        ],
+        "color": 3,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          79,
+          31,
+          "记录状态",
+          64,
+          22
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "fillRect",
+        "args": [
+          27,
+          125,
+          3,
+          30
+        ],
+        "color": 2,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          129,
+          31,
+          "暂停",
+          32,
+          22
+        ],
+        "color": 2,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          179,
+          31,
+          "保存运动",
+          64,
+          22
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          223,
+          31,
+          "2/3选择 4确定",
+          101,
+          22
+        ],
+        "color": 3,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          247,
+          31,
+          "5返回",
+          41,
+          22
+        ],
+        "color": 3,
+        "background": 0
+      }
+    ],
+    "menu_exit": [
+      {
+        "op": "clear",
+        "args": [],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          17,
+          31,
+          "退出应用",
+          64,
+          22
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          43,
+          31,
+          "2/3",
+          24,
+          22
+        ],
+        "color": 3,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          79,
+          31,
+          "保存退出",
+          64,
+          22
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "fillRect",
+        "args": [
+          27,
+          125,
+          3,
+          30
+        ],
+        "color": 2,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          129,
+          31,
+          "放弃退出",
+          64,
+          22
+        ],
+        "color": 2,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          179,
+          31,
+          "返回比赛",
+          64,
+          22
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          223,
+          31,
+          "2/3选择 4确定",
+          101,
+          22
+        ],
+        "color": 3,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          247,
+          31,
+          "5返回",
+          41,
+          22
+        ],
+        "color": 3,
+        "background": 0
+      }
+    ],
+    "menu_discard": [
+      {
+        "op": "clear",
+        "args": [],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          17,
+          31,
+          "放弃本次运动？",
+          112,
+          22
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          43,
+          31,
+          "1/2",
+          24,
+          22
+        ],
+        "color": 3,
+        "background": 0
+      },
+      {
+        "op": "fillRect",
+        "args": [
+          27,
+          125,
+          3,
+          30
+        ],
+        "color": 2,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          129,
+          31,
+          "取消",
+          32,
+          22
+        ],
+        "color": 2,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          179,
+          31,
+          "确认放弃",
+          64,
+          22
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          223,
+          31,
+          "2/3选择 4确定",
+          101,
+          22
+        ],
+        "color": 3,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          247,
+          31,
+          "5返回",
+          41,
+          22
+        ],
+        "color": 3,
+        "background": 0
+      }
+    ],
+    "menu_new_save": [
+      {
+        "op": "clear",
+        "args": [],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          17,
+          31,
+          "是否保存当前",
+          96,
+          22
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          43,
+          31,
+          "对局结果",
+          64,
+          22
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          69,
+          31,
+          "1/2",
+          24,
+          22
+        ],
+        "color": 3,
+        "background": 0
+      },
+      {
+        "op": "fillRect",
+        "args": [
+          27,
+          125,
+          3,
+          30
+        ],
+        "color": 2,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          129,
+          31,
+          "是",
+          16,
+          22
+        ],
+        "color": 2,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          179,
+          31,
+          "否",
+          16,
+          22
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          223,
+          31,
+          "2/3选择 4确定",
+          101,
+          22
+        ],
+        "color": 3,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          247,
+          31,
+          "5返回",
+          41,
+          22
+        ],
+        "color": 3,
+        "background": 0
+      }
+    ],
+    "menu_finish": [
+      {
+        "op": "clear",
+        "args": [],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          17,
+          31,
+          "是否保存当前",
+          96,
+          22
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          43,
+          31,
+          "对局结果",
+          64,
+          22
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          69,
+          31,
+          "1/2",
+          24,
+          22
+        ],
+        "color": 3,
+        "background": 0
+      },
+      {
+        "op": "fillRect",
+        "args": [
+          27,
+          125,
+          3,
+          30
+        ],
+        "color": 2,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          129,
+          31,
+          "是",
+          16,
+          22
+        ],
+        "color": 2,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          179,
+          31,
+          "否",
+          16,
+          22
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          223,
+          31,
+          "2/3选择 4确定",
+          101,
+          22
+        ],
+        "color": 3,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          247,
+          31,
+          "5返回",
+          41,
+          22
+        ],
+        "color": 3,
+        "background": 0
+      }
+    ],
+    "menu_finish_entry": [
+      {
+        "op": "clear",
+        "args": [],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          17,
+          31,
+          "比赛菜单",
+          64,
+          22
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          43,
+          31,
+          "6/7",
+          24,
+          22
+        ],
+        "color": 3,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          79,
+          31,
+          "按键锁定",
+          64,
+          22
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "fillRect",
+        "args": [
+          27,
+          125,
+          3,
+          30
+        ],
+        "color": 2,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          129,
+          31,
+          "结束对局",
+          64,
+          22
+        ],
+        "color": 2,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          179,
+          31,
+          "退出应用",
+          64,
+          22
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          223,
+          31,
+          "2/3选择 4确定",
+          101,
+          22
+        ],
+        "color": 3,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          247,
+          31,
+          "5返回",
+          41,
+          22
+        ],
+        "color": 3,
+        "background": 0
+      }
+    ],
+    "game_over": [
+      {
+        "op": "clear",
+        "args": [],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          11,
+          31,
+          "记录 14:00",
+          77,
+          22
+        ],
+        "color": 2,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          39,
+          31,
+          "单打 第1局 局数1-0",
+          137,
+          22
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          84,
+          71,
+          31,
+          "我方",
+          32,
+          22
+        ],
+        "color": 2,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          196,
+          71,
+          31,
+          "对方",
+          32,
+          22
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          84,
+          103,
+          5,
+          "21",
+          55,
+          66
+        ],
+        "color": 2,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          196,
+          103,
+          5,
+          "18",
+          55,
+          66
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "fillRect",
+        "args": [
+          38,
+          80,
+          5,
+          5
+        ],
+        "color": 5,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          42,
+          76,
+          42,
+          88
+        ],
+        "color": 5,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          43,
+          77,
+          43,
+          87
+        ],
+        "color": 5,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          44,
+          78,
+          44,
+          86
+        ],
+        "color": 5,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          45,
+          79,
+          45,
+          85
+        ],
+        "color": 5,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          46,
+          80,
+          46,
+          84
+        ],
+        "color": 5,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          47,
+          81,
+          47,
+          83
+        ],
+        "color": 5,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          48,
+          82,
+          48,
+          82
+        ],
+        "color": 5,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          140,
+          78,
+          140,
+          170
+        ],
+        "color": 4,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          186,
+          31,
+          "本局结束 按4继续",
+          125,
+          22
+        ],
+        "color": 3,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          211,
+          31,
+          "心率-- 热量--",
+          92,
+          22
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          236,
+          31,
+          "4下一局 5撤销",
+          102,
+          22
+        ],
+        "color": 3,
+        "background": 0
+      }
+    ],
+    "round_save": [
+      {
+        "op": "clear",
+        "args": [],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          17,
+          31,
+          "是否保存本局？",
+          112,
+          22
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          43,
+          31,
+          "1/2",
+          24,
+          22
+        ],
+        "color": 3,
+        "background": 0
+      },
+      {
+        "op": "fillRect",
+        "args": [
+          27,
+          125,
+          3,
+          30
+        ],
+        "color": 2,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          129,
+          31,
+          "是",
+          16,
+          22
+        ],
+        "color": 2,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          179,
+          31,
+          "否",
+          16,
+          22
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          223,
+          31,
+          "2/3选择 4确定",
+          101,
+          22
+        ],
+        "color": 3,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          247,
+          31,
+          "5返回",
+          41,
+          22
+        ],
+        "color": 3,
+        "background": 0
+      }
+    ],
+    "round_next": [
+      {
+        "op": "clear",
+        "args": [],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          17,
+          31,
+          "是否开始下一局？",
+          128,
+          22
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          43,
+          31,
+          "1/2",
+          24,
+          22
+        ],
+        "color": 3,
+        "background": 0
+      },
+      {
+        "op": "fillRect",
+        "args": [
+          27,
+          125,
+          3,
+          30
+        ],
+        "color": 2,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          129,
+          31,
+          "是",
+          16,
+          22
+        ],
+        "color": 2,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          179,
+          31,
+          "否",
+          16,
+          22
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          223,
+          31,
+          "2/3选择 4确定",
+          101,
+          22
+        ],
+        "color": 3,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          247,
+          31,
+          "5返回",
+          41,
+          22
+        ],
+        "color": 3,
+        "background": 0
+      }
+    ],
+    "round_team": [
+      {
+        "op": "clear",
+        "args": [],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          17,
+          31,
+          "发球方",
+          48,
+          22
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          43,
+          31,
+          "1/2",
+          24,
+          22
+        ],
+        "color": 3,
+        "background": 0
+      },
+      {
+        "op": "fillRect",
+        "args": [
+          27,
+          125,
+          3,
+          30
+        ],
+        "color": 2,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          129,
+          31,
+          "我方",
+          32,
+          22
+        ],
+        "color": 2,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          179,
+          31,
+          "对方",
+          32,
+          22
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          223,
+          31,
+          "2/3选择 4确定",
+          101,
+          22
+        ],
+        "color": 3,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          247,
+          31,
+          "5返回",
+          41,
+          22
+        ],
+        "color": 3,
+        "background": 0
+      }
+    ],
+    "result_win": [
+      {
+        "op": "clear",
+        "args": [],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          35,
+          31,
+          "恭喜获胜",
+          64,
+          22
+        ],
+        "color": 2,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          65,
+          31,
+          "三局两胜",
+          64,
+          22
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          113,
+          103,
+          167,
+          103
+        ],
+        "color": 2,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          113,
+          103,
+          122,
+          140
+        ],
+        "color": 2,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          167,
+          103,
+          158,
+          140
+        ],
+        "color": 2,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          122,
+          140,
+          158,
+          140
+        ],
+        "color": 2,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          140,
+          140,
+          140,
+          164
+        ],
+        "color": 2,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          121,
+          166,
+          159,
+          166
+        ],
+        "color": 2,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          113,
+          110,
+          101,
+          110
+        ],
+        "color": 2,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          101,
+          110,
+          110,
+          132
+        ],
+        "color": 2,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          110,
+          132,
+          120,
+          132
+        ],
+        "color": 2,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          167,
+          110,
+          179,
+          110
+        ],
+        "color": 2,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          179,
+          110,
+          170,
+          132
+        ],
+        "color": 2,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          170,
+          132,
+          160,
+          132
+        ],
+        "color": 2,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          80,
+          111,
+          88,
+          111
+        ],
+        "color": 2,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          84,
+          107,
+          84,
+          115
+        ],
+        "color": 2,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          192,
+          137,
+          200,
+          137
+        ],
+        "color": 2,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          196,
+          133,
+          196,
+          141
+        ],
+        "color": 2,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          187,
+          31,
+          "局数 2:0",
+          59,
+          22
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          214,
+          31,
+          "下一场再战",
+          80,
+          22
+        ],
+        "color": 2,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          240,
+          31,
+          "4继续 稍后保存",
+          109,
+          22
+        ],
+        "color": 3,
+        "background": 0
+      }
+    ],
+    "match_save": [
+      {
+        "op": "clear",
+        "args": [],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          17,
+          31,
+          "是否保存比赛？",
+          112,
+          22
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          43,
+          31,
+          "1/2",
+          24,
+          22
+        ],
+        "color": 3,
+        "background": 0
+      },
+      {
+        "op": "fillRect",
+        "args": [
+          27,
+          125,
+          3,
+          30
+        ],
+        "color": 2,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          129,
+          31,
+          "是",
+          16,
+          22
+        ],
+        "color": 2,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          179,
+          31,
+          "否",
+          16,
+          22
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          223,
+          31,
+          "2/3选择 4确定",
+          101,
+          22
+        ],
+        "color": 3,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          247,
+          31,
+          "5返回",
+          41,
+          22
+        ],
+        "color": 3,
+        "background": 0
+      }
+    ],
+    "result_lose": [
+      {
+        "op": "clear",
+        "args": [],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          35,
+          31,
+          "继续加油",
+          64,
+          22
+        ],
+        "color": 5,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          65,
+          31,
+          "单局完赛",
+          64,
+          22
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          140,
+          104,
+          140,
+          165
+        ],
+        "color": 5,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          117,
+          127,
+          140,
+          104
+        ],
+        "color": 5,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          163,
+          127,
+          140,
+          104
+        ],
+        "color": 5,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          124,
+          165,
+          156,
+          165
+        ],
+        "color": 5,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          80,
+          111,
+          88,
+          111
+        ],
+        "color": 5,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          84,
+          107,
+          84,
+          115
+        ],
+        "color": 5,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          192,
+          137,
+          200,
+          137
+        ],
+        "color": 5,
+        "background": 0
+      },
+      {
+        "op": "line",
+        "args": [
+          196,
+          133,
+          196,
+          141
+        ],
+        "color": 5,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          187,
+          31,
+          "局数 0:1",
+          59,
+          22
+        ],
+        "color": 1,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          214,
+          31,
+          "再接再厉",
+          64,
+          22
+        ],
+        "color": 5,
+        "background": 0
+      },
+      {
+        "op": "text",
+        "args": [
+          140,
+          240,
+          31,
+          "4继续 稍后保存",
+          109,
+          22
+        ],
+        "color": 3,
+        "background": 0
+      }
+    ]
+  }
+}
