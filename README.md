@@ -6,7 +6,7 @@
 
 面向 Garmin Fēnix 6X Pro / Solar 的中文羽毛球运动应用。
 
-[![Version](https://img.shields.io/badge/source-v0.10.0-00b96b)](https://github.com/yilongzhao1122/garmin-badminton-score/releases/latest)
+[![Version](https://img.shields.io/badge/source-v0.11.0-00b96b)](https://github.com/yilongzhao1122/garmin-badminton-score/releases/latest)
 [![Target](https://img.shields.io/badge/device-fenix6xpro-333333)](manifest.xml)
 [![License](https://img.shields.io/badge/code-MIT-blue)](LICENSE)
 
@@ -20,7 +20,7 @@
 
 ## 用手表完成一场比赛
 
-- **单打 / 双打**：21分制，另有15分与11分练习制；单局赛或三局两胜。
+- **单打 / 双打**：21分制，另有15分制与11分练习制；单局赛或三局两胜。
 - **两键计分**：2键我方得分，3键对方得分；黄色小箭头标记最近得分方。
 - **接发球场图**：4键开球查看俯视场地、发球人及发球区；双打保留 A1/A2/B1/B2 编号。
 - **比赛流程完整**：局末保存、下一局接发球设置、胜利或加油页面、整场保存或放弃。
@@ -36,9 +36,9 @@
 
 | 文件 | 用途 |
 | --- | --- |
-| [源码包 ZIP](https://github.com/yilongzhao1122/garmin-badminton-score/releases/latest/download/garmin-badminton-score-v0.10.0-source.zip) | 完整工程，通过自己的 SDK 和密钥构建 |
-| [离线中文指南 HTML](https://github.com/yilongzhao1122/garmin-badminton-score/releases/latest/download/garmin-badminton-score-v0.10.0-guide-cn.html) | 下载后在电脑或手机浏览器阅读，图片已内嵌 |
-| [离线英文指南 HTML](https://github.com/yilongzhao1122/garmin-badminton-score/releases/latest/download/garmin-badminton-score-v0.10.0-guide-en.html) | 英文安装与操作说明，图片已内嵌 |
+| [源码包 ZIP](https://github.com/yilongzhao1122/garmin-badminton-score/releases/latest/download/garmin-badminton-score-v0.11.0-source.zip) | 完整工程，通过自己的 SDK 和密钥构建 |
+| [离线中文指南 HTML](https://github.com/yilongzhao1122/garmin-badminton-score/releases/latest/download/garmin-badminton-score-v0.11.0-guide-cn.html) | 下载后在电脑或手机浏览器阅读，图片已内嵌 |
+| [离线英文指南 HTML](https://github.com/yilongzhao1122/garmin-badminton-score/releases/latest/download/garmin-badminton-score-v0.11.0-guide-en.html) | 英文安装与操作说明，图片已内嵌 |
 | [SHA256SUMS.txt](https://github.com/yilongzhao1122/garmin-badminton-score/releases/latest/download/SHA256SUMS.txt) | 校验下载文件 |
 
 **这是源码发行版，未提供预编译 PRG。** 先安装 Garmin 官方 Monkey C 扩展和 SDK，下载 `fenix6xpro` 设备包，运行 `Monkey C: Verify Installation`。VS Code 打开工程根目录，使用自己的 Developer Key，打开 `source/BadmintonApp.mc` → **Ctrl+F5 → fenix6xpro**。
@@ -57,7 +57,7 @@
 | 4 · START | 开球 / 下一局 / 查看结果 | 确定 |
 | 5 · BACK | 场图回比分；比分页撤销 | 返回上一层 |
 
-数据页上的2/3不加分。计分锁定与暂停运动分别控制；解锁后可继续计分。
+数据页上的2/3不加分。计分锁定与暂停比赛分别控制；暂停后需明确选择继续比赛。
 
 ## 从开球到保存
 
@@ -67,7 +67,7 @@
 4. 下一局选择“否”会保留刚结束的比分；可以再次按4进入。完成接发球选择前不会清分。
 5. 整场结束：按4查看结果 → 是否保存比赛 → 回到0:0准备；应用保持打开，可以直接开始或新建。
 
-21分制需领先2分、30分封顶；21:20不会结束。三局两胜先赢两局即结束。15/11分为练习设置，分别封顶21/15分。
+21分制需领先2分、30分封顶；21:20不会结束。三局两胜先赢两局即结束。15分制封顶21分，11分练习制封顶15分。
 
 ![单打与双打发球区示意](docs/assets/courts.png)
 
@@ -78,7 +78,7 @@
 | 数据 | 保存与查看 |
 | --- | --- |
 | 心率、热量、运动时长 | 开启运动记录并保存后，生成普通 FIT；由手表同步至 Connect |
-| 各局比分、用时、接发球与比赛结果 | 在手表应用中查看；保存最后一场归档 |
+| 各局比分、用时、接发球与比赛结果 | 在手表应用中查看；保存最近8场归档 |
 | 单局“保存” | 单独保存表内检查点，不拆分整场 FIT |
 | Connect 中详细每局比分 | 默认不导出自定义 FIT 字段，不提供详细比分图表 |
 
@@ -95,10 +95,24 @@ node tools/check_performance.cjs
 node tools/check_serve_ui.cjs
 ```
 
-当前 **166项 Node 逻辑 / 模拟 API 检查通过**，并提供25个 `Run No Evil` 原生格式测试。Node 检查不替代 Garmin SDK 编译、官方模拟器、真实堆内存或 Connect 同步验收。完整范围见 [VALIDATION.md](VALIDATION.md)。
+当前 **196项 Node 逻辑 / 模拟 API 检查通过**，并提供25个 `Run No Evil` 原生格式测试。Node 检查不替代 Garmin SDK 编译、官方模拟器、真实堆内存或 Connect 同步验收。完整范围见 [VALIDATION.md](VALIDATION.md)。
 
 开发说明见 [CONTRIBUTING.md](CONTRIBUTING.md)，代码结构见 [ARCHITECTURE.md](docs/ARCHITECTURE.md)。
 
 ## 许可与归属
 
 源码采用 [MIT License](LICENSE)。`BadmintonCN` 点阵字体衍生自 Noto Sans CJK SC Bold，遵循 [SIL Open Font License 1.1](FONT_LICENSE.txt)。保留字体署名与许可。Garmin、Fēnix、Connect IQ 为其权利人的商标，本项目为独立项目。
+
+## 暂停、规则与比赛历史
+
+长按2 → 暂停比赛／继续比赛，纯计分和记录运动两种模式均可使用。暂停冻结整场及本局时间并阻止计分；解锁按键不会解除暂停。正在记录运动时，同时暂停或继续该运动。
+
+21分制在领先方首次到11分时提示间歇；15分制在8分提示，第三局同分数提示换边。局中间歇至多60秒，局间至多120秒。提示不自动暂停；场地图保持我方在下、对方在上的逻辑视角。11分练习制不附加正式比赛间歇提示。15分新规则生效日为2027年1月4日，本版不按日期自动更改正在进行的比赛。比赛设置 → 比赛规则可查看当前分数、封顶、局制与首发规则。
+
+比赛设置 → 历史比赛，查看最近8场的整场胜负、局数、日期、单双打、分制、用时与各局比分。第9场保存时移出最早一场；“上场比赛”仍是最近一场快捷入口。
+
+记录停止或暂停后实时心率显示“--”；成功保存后平均／最高心率和热量仍可作本次摘要查看，放弃记录会清空这些摘要。菜单换页有350毫秒确认间隔，防止同一次连按跨越多个确认页。
+
+比分、时间、检查点、结算标记及历史合并在一个版本化快照中保存；首次启动会迁移旧存档。正常恢复不计应用关闭期间的时间。普通FIT仍由Garmin单独保存。
+
+[审查建议及落实说明](docs/REVIEW_CHANGES_CN.md) · [验证报告](VALIDATION.md)

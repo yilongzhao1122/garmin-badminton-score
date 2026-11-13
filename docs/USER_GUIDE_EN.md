@@ -1,4 +1,4 @@
-# Garmin Badminton Score v0.10.0 — User Guide
+# Garmin Badminton Score v0.11.0 — User Guide
 
 [中文](USER_GUIDE_CN.md) · [English project overview](../README_EN.md)
 
@@ -32,7 +32,7 @@ For example, after game one ends at 21:18:
 
 Button5 at the first question returns to the scoreboard. In subsequent setup steps it moves back one level. The menu entry for the next game uses the same confirmation flow.
 
-At21:20 a 21-point game is still in progress: a two-point lead is required, with a 30-point cap. The15- and 11-point practice formats cap at 21 and 15 respectively.
+At21:20 a 21-point game is still in progress: a two-point lead is required, with a 30-point cap. The15- and 11-point formats cap at 21 and 15 respectively.
 
 ## 3. Setting up the next service
 
@@ -41,7 +41,7 @@ At21:20 a 21-point game is still in progress: a two-point lead is required, with
 | Singles | Serving side → Confirm the other side as receiver → 0:0 |
 | Doubles | Serving side → Specific server → Opposing receiver → 0:0 |
 
-The previous game's winner is the default serving side. You may explicitly override that choice. At0:0, the server uses their own right service court and the receiver is diagonally opposite. Player identifiers remain fixed throughout the match.
+Choose Free play (自由练习) or Winner first (胜方先发) in the new-match wizard. Free play defaults to the previous winner and allows an explicit override. Winner first requires the previous winning team to serve; either doubles player on that team can be selected. At0:0, the server uses their own right service court and the receiver is diagonally opposite. Player identifiers remain fixed throughout the match.
 
 Setup is staged: going back before receiver confirmation does not clear the previous score or advance the game number. After confirmation, press 4 at 0:0 to start the first rally. Waiting in this ready state is excluded from that game's timer. The overall activity session continues across games.
 
@@ -60,7 +60,7 @@ A one-game match ends after its game. A best-of-three match ends after one side 
 
 Button5 at the final save question returns to the final scoreboard. Press 4 again to reopen the results flow. A deciding game is included in the match confirmation; there is no duplicate game-save question.
 
-A save error preserves the score and session for retry. If FIT saving succeeded but local archiving failed, retrying does not save a duplicate FIT. The menu's 结束对局 (End match) handles an early manual finish; 退出应用 (Exit app) actually closes the app.
+A save error preserves the score and session for retry. If FIT saving succeeded but local archiving failed, Pending settlement freezes scoring and match timing. Retry from End match (结束对局); the retry completes archiving without saving another copy of the FIT. The menu's 结束对局 (End match) handles an early manual finish; 退出应用 (Exit app) actually closes the app.
 
 ## 5. Five-button operation
 
@@ -119,7 +119,7 @@ Choosing Yes at the final match question archives all game results, including ga
 
 One ordinary FIT activity spans the match; game-save choices do not split it into separate activities. Detailed scores and game times stay in the watch app. Custom FIT fields are disabled by default, so detailed score charts are not provided in Connect.
 
-Match settings provide current game scores and the last saved match. Only the last match archive is retained. Ordinary system exit attempts interruption recovery; recovery after a crash or sudden power loss is not guaranteed.
+Match settings provide current game scores and the last saved match. The eight latest compact match archives are retained. Ordinary system exit attempts interruption recovery; recovery after a crash or sudden power loss is not guaranteed.
 
 ## 8. Timing, heart rate and pause
 
@@ -173,11 +173,25 @@ Verify default-Yes questions, No returning to the original score, staged service
 
 Also verify save/discard returning to ready, retry without duplicate FIT, wrapping menus, BACK navigation, Chinese glyphs, lock/unlock and pause behavior. Measure native memory and test actual phone synchronization.
 
-The release preparation checks comprise166 adapted-source/mocked-API checks. They do not replace official compilation, native tests, simulator execution or physical-device testing. See [Validation](VALIDATION_EN.md) for the exact scope.
+The release preparation checks comprise196 adapted-source/mocked-API checks. They do not replace official compilation, native tests, simulator execution or physical-device testing. See [Validation](VALIDATION_EN.md) for the exact scope.
 
 ## 13. References
 
 - [Garmin Connect IQ getting started](https://developer.garmin.com/connect-iq/connect-iq-basics/getting-started/)
 - [ActivityRecording.Session API](https://developer.garmin.com/connect-iq/api-docs/Toybox/ActivityRecording/Session.html)
 - [Garmin discussion of developer-field limits](https://forums.garmin.com/developer/connect-iq/f/discussion/234758/what-is-the-limiting-number-of-developer-fields-that-can-be-added-under-session/1115429)
-- [Garmin FIT discussion of Connect display metadata](https://forums.garmin.com/developer/fit-sdk/f/discussion/255702/fit-file-developer-data-looks-correct-but-does-not-display-in-garmin-connect/1950795)
+- [Garmin FIT discussion of Connect display metadata](https://forums.garmin.com/developer/fit-sdk/f/discussion/255702/fit-file-developer-data-looks-correct-but-does-not-display-in-garmin-connect/1960795)
+
+## Pause, rules and match history
+
+The root menu has Pause match (暂停比赛) / Resume match (继续比赛), available with or without an activity recording. Both match clocks stop and scoring is blocked while paused. Unlocking keys does not resume play. An active FIT recording pauses/resumes with this command.
+
+Button 4 starts a game and shows the service court. A direct first score on button 2/3 also starts its timer and the requested recording; timing begins at that keypress. The scoreboard displays the actual server, their left/right service court and the receiver, using A1/A2/B1/B2.
+
+21-point games show an interval reminder at 11; 15-point games at 8. The same threshold in game three also prompts a change of ends. The rule panel lists 60-second midgame and 120-second between-game interval limits. Reminders do not pause automatically; the court keeps its team-relative orientation. The 15-point rules take effect on 4 January 2027; this release never changes a live match based on the date. The 11-point practice preset has no formal interval reminders.
+
+Match settings → History (历史比赛) keeps eight matches, newest first. It lists the match winner, games won, date, singles/doubles, points format, duration and game scores. The oldest entry is replaced on saving a ninth match. Last match (上场比赛) remains a shortcut.
+
+Live HR clears to -- when recording stops or pauses. Saved average/maximum HR and calories remain a summary; discarding clears that summary. Shared 350 ms transition guards prevent a repeated press from confirming successive screens.
+
+Scores, timing, checkpoints, settlement and bounded history are stored in one versioned snapshot. Older saves migrate once. Restoring excludes app downtime; FIT remains a separate Garmin operation.

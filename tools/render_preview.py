@@ -70,7 +70,7 @@ def watch(canvas, center_xy, scene, scale=1.12):
         center(d,(x+side*20,y),str(number),15,'#4c6257',True)
 
 out=Image.new('RGB',(1380,1250),BG); d=ImageDraw.Draw(out)
-d.text((40,24),'羽毛球计分 v0.10.0 · 19px菜单与完整局末流程',font=font(27,True),fill='#193629')
+d.text((40,24),'羽毛球计分 v'+(ROOT/'VERSION').read_text().strip()+' · 比赛计时与接发球',font=font(27,True),fill='#193629')
 d.text((40,72),'默认选“是”；2/3选择、4确认、5返回。结果动画为代码线条，无图片文件。',font=font(18),fill='#4b6255')
 items=[(240,326,'game_over','本局结束，按4继续','保留比分，进入局末选择'),
  (690,326,'round_save','先选择是否保存本局','默认“是”，保存表内比分/用时检查点'),

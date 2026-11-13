@@ -24,7 +24,7 @@ if ($LASTEXITCODE -ne 0) { throw 'git init failed.' }
 & git config user.email '132163382+yilongzhao1122@users.noreply.github.com'
 & git add -- .
 if ($LASTEXITCODE -ne 0) { throw 'git add failed.' }
-& git commit -m 'Release Garmin Badminton Score v0.10.0'
+& git commit -m 'Release Garmin Badminton Score v0.11.0'
 if ($LASTEXITCODE -ne 0) { throw 'git commit failed.' }
 & gh repo create $Repo --public --source . --remote origin --description 'Chinese badminton scoring and service court guidance for Garmin Fenix 6X Pro / Solar, with ordinary FIT activity recording.' --push
 if ($LASTEXITCODE -ne 0) { throw 'GitHub publication failed. Local files are retained; do not rerun blindly.' }

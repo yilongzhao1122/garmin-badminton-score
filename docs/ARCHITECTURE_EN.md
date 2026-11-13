@@ -27,3 +27,9 @@ Current state is cleared only after successful handling. If native FIT saving su
 Only resources is the runtime resource path in monkey.jungle. Documentation/design previews are not watch backgrounds. BadmintonCN is a licensed subset; score digits use measured device fonts.
 
 Game duration excludes between-game setup and manual pause. Match duration includes game breaks but excludes pause. Native activity duration may also include waiting at the final confirmation. Unknown timing stays unknown.
+
+## Snapshot and settlement
+
+`match-state-v2` is the authoritative [schema, active-or-null, archives] value. Active state contains engine, recording preference, saved-FIT flag, report, checkpoints, pause, pending settlement, service rule and start date. All local state is committed by one Storage.setValue call. Legacy keys are migration inputs only. An active=null snapshot prevents old keys from reviving a completed match.
+
+Settlement intent is persisted before saving/discarding FIT. While pending, scoring, undo, service edits and clocks are frozen. On local archive failure, the runtime retains the saved-FIT flag; a retry cannot repeat that session save. FIT and Storage are separate device APIs, so the snapshot does not claim a transaction across a power loss between them. History retains at most eight compact archives without undo stacks. New-game and new-match candidates persist before becoming live.

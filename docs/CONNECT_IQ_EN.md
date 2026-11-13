@@ -26,10 +26,10 @@ Adapted-source/mocked-API checks were executed. Native compilation, real phone t
 
 ## Build and submit
 
-1. Open the completev0.10.0 project in VS Code. Keep your existing Developer Key outside the repository and back it up.
+1. Open the completev0.11.0 project in VS Code. Keep your existing Developer Key outside the repository and back it up.
 2. Verify watch-app type, unchanged appID andfenix6xpro target. Do not claim other devices without testing.
 3. Run SDK compilation, native tests, simulator and target-watch acceptance, including activity saving, menus, font bounds and memory.
-4. Run **Monkey C: Export Project** and follow its wizard to produce an IQ using your own key and supported products/languages. If prompted, use version0.10.0. Renaming a PRG or ZIP does not create an IQ.
+4. Run **Monkey C: Export Project** and follow its wizard to produce an IQ using your own key and supported products/languages. If prompted, use version0.11.0. Renaming a PRG or ZIP does not create an IQ.
 5. Visit [Garmin Submit an App](https://developer.garmin.com/connect-iq/submit-an-app/), sign in and complete the developer requirements. The account owner should read/accept any required agreement.
 6. Upload theIQ. After validation, supply the device-app category, bilingual name/descriptions, support details and requested data-handling information. Follow current upload-form image requirements.
 7. Use actual simulator/watch screenshots. Repository illustrations are computer reconstructions and must not be represented as native screenshots.

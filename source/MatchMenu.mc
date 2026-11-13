@@ -3,14 +3,18 @@ import Toybox.Graphics;
 import Toybox.Timer;
 import Toybox.Lang;
 import Toybox.System;
+import Toybox.Time;
+import Toybox.Time.Gregorian;
 
 // One custom menu view owns its navigation frames. Child selection never
 // pops its parent; BACK removes exactly one frame, then closes at the root.
 function showScoreMenu(app) {
+    app.blockInput();
     var menu = new MatchMenu(app);
     WatchUi.pushView(menu, new MatchMenuDelegate(menu), WatchUi.SLIDE_IMMEDIATE);
 }
 function showGameEndFlow(app) {
+    app.blockInput();
     var menu = new MatchMenu(app); menu.frames = []; menu.openGameEnd();
     WatchUi.pushView(menu, new MatchMenuDelegate(menu), WatchUi.SLIDE_IMMEDIATE);
 }
@@ -39,13 +43,14 @@ class MatchMenu extends WatchUi.View {
     function root() {
         frames = [];
         self.push("比赛菜单", [["新建比赛","new",null],["比赛设置","match",null],
-            ["数据页面","pages",null],["运动记录","activity",null],["按键锁定","keys",null],["结束对局","finish",null],["退出应用","exit",null]], "root", null);
+            ["数据页面","pages",null],[app.paused ? "继续比赛" : "暂停比赛","pauseMatch",null],["运动记录","activity",null],["按键锁定","keys",null],["结束对局","finish",null],["退出应用","exit",null]], "root", null);
     }
     function push(title, rows, kind, context) {
-        frames.add([title, rows, 0, kind, context]); WatchUi.requestUpdate();
+        app.blockInput(); frames.add([title, rows, 0, kind, context]); WatchUi.requestUpdate();
     }
     function frame() { return frames[frames.size() - 1]; }
     function replace(title, rows, kind, context) {
+        app.blockInput();
         var selected = self.frame()[2] as Lang.Number;
         if (selected >= rows.size()) { selected = rows.size() - 1; }
         frames[frames.size() - 1] = [title, rows, selected, kind, context];
@@ -67,24 +72,37 @@ class MatchMenu extends WatchUi.View {
         if (frames.size() == 1) { self.close(); return; }
         var keep = [];
         for (var i = 0; i < frames.size() - 1; i += 1) { keep.add(frames[i]); }
-        frames = keep; WatchUi.requestUpdate();
+        frames = keep; app.blockInput();
+        // A failed API call may change recording->paused or create a session.
+        // Refresh ancestors before the error page is dismissed.
+        for (var j = 0; j < frames.size(); j += 1) {
+            if (frames[j][3].equals("root")) { frames[j][1][3][0] = app.paused ? "继续比赛" : "暂停比赛"; }
+            if (frames[j][3].equals("activity")) {
+                frames[j][1] = self.activityRows();
+                if (frames[j][2] >= frames[j][1].size()) { frames[j][2] = 0; }
+            }
+        }
+        WatchUi.requestUpdate();
     }
-    function close() { WatchUi.popView(WatchUi.SLIDE_IMMEDIATE); }
+    function close() { app.blockInput(); WatchUi.popView(WatchUi.SLIDE_IMMEDIATE); }
     function message(title, detail) {
         self.push(title, [[detail,"none",null],["返回","back",null]], "message", null);
     }
-    function copyPlan(p) { return [p[0],p[1],p[2],p[3],p[4],p[5]]; }
+    function copyPlan(p) { return [p[0],p[1],p[2],p[3],p[4],p[5],p[6]]; }
     function matchRows() {
         var rows = [];
         if (app.engine.state[4] == 1) { rows.add(["下一局","next",null]); }
         if (app.engine.state[4] == 2) { rows.add(["比赛结果","showResult",null]); }
         if (app.engine.state[4] == 0) { rows.add(["修改接发球","edit",null]); }
         rows.add(["各局比分","history",null]);
+        rows.add(["比赛规则","rules",null]);
+        if (app.archives.size() > 0) { rows.add(["历史比赛","archives",null]); }
         if (app.lastMatch != null) { rows.add(["上场比赛","last",null]); }
         return rows;
     }
     function activityRows() {
         var rows = [];
+        if (app.settling) { return [["结束对局重试","finish",null],["记录状态","status",null]]; }
         if (app.recorder.hasSession()) {
             rows.add(app.recorder.status == 1 ? ["暂停","recPause",null] : ["继续记录","recResume",null]);
             rows.add(["保存运动","recSave",null]);
@@ -95,6 +113,7 @@ class MatchMenu extends WatchUi.View {
     }
     function keysRows() { return [["解锁","unlock",null],["锁定","lock",null]]; }
     function recordingState() {
+        if (app.settling) { return "结算待完成"; }
         if (app.recorder.status == 1) { return "记录中"; }
         if (app.recorder.status == 2) { return "已暂停"; }
         if (app.recorder.status == 3) { return "运动已保存"; }
@@ -138,7 +157,8 @@ class MatchMenu extends WatchUi.View {
         var rows = [];
         for (var player = 0; player < 4; player += 1) {
             var team = player < 2 ? 0 : 1;
-            var allowed = !firstSetup || app.engine.state[6] == 1 || team == app.engine.state[5];
+            var allowed = app.ruleMode == 0 || app.engine.state[6] == 1 ||
+                app.engine.state[0] + app.engine.state[1] > 0 || team == app.engine.state[5];
             if (allowed && (app.engine.isDoubles() || player == 0 || player == 2)) {
                 rows.add([app.engine.isDoubles() ? badmintonPlayerLabel(player) : (player == 0 ? "我方" : "对方"), "editServer", player]);
             }
@@ -163,6 +183,21 @@ class MatchMenu extends WatchUi.View {
             rows.add([state + (report.known ? self.duration(results[i][2] * 1000) : "用时未知"),"none",null]);
         }
         self.push(title, rows, "history", null);
+    }
+    function archiveSummary(a, title) {
+        var restored = new ScoreEngine(a[0][1],a[0][2],a[0][3]); restored.restore(a[0]);
+        var state = restored.state;
+        var rows = [["局数 " + state[2].toString() + ":" + state[3].toString(),"none",null],
+            [state[4] == 2 ? (state[2] > state[3] ? "我方获胜" : "对方获胜") : "中途结束","none",null],
+            [state[8] == 1 ? "双打" : "单打","none",null],
+            [a[0][1].toString() + "分制","none",null],
+            [a[1] ? "运动已保存" : "无运动文件","none",null],
+            [a.size() > 3 ? "用时 " + self.duration(a[2]) : "用时未知","none",null]];
+        if (a.size() > 6 && a[6] > 0) {
+            var date = Gregorian.info(new Time.Moment(a[6]),Time.FORMAT_SHORT);
+            rows.add([date.year.toString() + "/" + date.month.toString() + "/" + date.day.toString(),"none",null]);
+        }
+        rows.add(["各局比分","lastGames",a]); self.push(title,rows,"last",null);
     }
     function returnMatch() {
         while (frames.size() > 1 && !self.frame()[3].equals("match")) {
@@ -189,8 +224,10 @@ class MatchMenu extends WatchUi.View {
         }
         if (id.equals("roundNext")) {
             if (!value) { app.showPage(0); self.close(); return; }
-            self.push("发球方", [["我方","roundTeam",0],["对方","roundTeam",1]], "roundTeam", null);
-            self.frame()[2] = app.engine.state[5]; return;
+            var teams = [["我方","roundTeam",0],["对方","roundTeam",1]];
+            if (app.ruleMode == 1) { teams = [teams[app.engine.state[5]]]; }
+            self.push(app.ruleMode == 1 ? "上局胜方先发球" : "自选发球方", teams, "roundTeam", null);
+            self.frame()[2] = app.ruleMode == 1 ? 0 : app.engine.state[5]; return;
         }
         if (id.equals("roundTeam")) {
             if (!app.engine.isDoubles()) { self.openRoundReceiver(number == 0 ? 0 : 2); }
@@ -226,15 +263,19 @@ class MatchMenu extends WatchUi.View {
             return;
         }
         if (id.equals("newMode")) {
-            self.push("每局分数", [["21分","newPoints",[21,30]],["15分","newPoints",[15,21]],
-                ["11分","newPoints",[11,15]]], "newPoints", [21,30,3,number,0,2]); return;
+            self.push("每局分数", [["21分 封顶30","newPoints",[21,30]],["15分 封顶21","newPoints",[15,21]],
+                ["11分练习 封顶15","newPoints",[11,15]]], "newPoints", [21,30,3,number,0,2,0]); return;
         }
         if (id.equals("newPoints")) {
             plan = self.copyPlan(context); plan[0] = value[0]; plan[1] = value[1];
             self.push("比赛局制", [["三局两胜","newFormat",3],["单局","newFormat",1]], "newFormat", plan); return;
         }
         if (id.equals("newFormat")) {
-            plan = self.copyPlan(context); plan[2] = number; self.openServer(plan); return;
+            plan = self.copyPlan(context); plan[2] = number;
+            self.push("接发球规则", [["自由练习","newRule",0],["胜方先发","newRule",1]], "newRule", plan); return;
+        }
+        if (id.equals("newRule")) {
+            plan = self.copyPlan(context); plan[6] = number; self.openServer(plan); return;
         }
         if (id.equals("newServer")) {
             plan = self.copyPlan(context); plan[4] = number;
@@ -255,9 +296,9 @@ class MatchMenu extends WatchUi.View {
         }
         if (id.equals("cancelNew")) { self.root(); return; }
         if (id.equals("newApply")) {
-            var p = value[0];
+            var p = value[0]; var oldRule = app.ruleMode; app.ruleMode = p[6];
             if (app.newMatch(p[0],p[1],p[2],value[1],p[3],p[4],p[5])) { self.close(); }
-            else { self.message("开始失败", app.notice); }
+            else { app.ruleMode = oldRule; self.message("开始失败", app.notice); }
             return;
         }
         if (id.equals("match")) { self.push("比赛设置", self.matchRows(), "match", null); return; }
@@ -287,16 +328,36 @@ class MatchMenu extends WatchUi.View {
             return;
         }
         if (id.equals("history")) { app.refreshMatch(); self.games(app.engine.pack(), "各局比分", app.report.pack(),app.checkpoints.pack()); return; }
-        if (id.equals("last")) {
-            var state = app.lastMatch[0][4];
-            self.push("上场比赛", [["我方 " + state[0].toString() + ":" + state[1].toString(),"none",null],
-                [app.lastMatch[1] ? "运动已保存" : "无运动文件","none",null],
-                [app.lastMatch.size() > 3 ? "用时 " + self.duration(app.lastMatch[2]) : "用时未知","none",null],
-                [app.lastMatch.size() > 4 && app.lastMatch[4] ? "中途结束" : (state[4] == 2 ? "正常完赛" : "未完对局"),"none",null],
-                ["各局比分","lastGames",null]], "last", null); return;
+        if (id.equals("last")) { self.archiveSummary(app.lastMatch, "上场比赛"); return; }
+        if (id.equals("archiveItem")) { self.archiveSummary(app.archives[number], "历史比赛"); return; }
+        if (id.equals("lastGames")) { self.games(value[0], "各局比分", value.size() > 3 ? value[3] : null,
+            value.size() > 5 ? value[5] : null); return; }
+        if (id.equals("archives")) {
+            var oldRows = [];
+            for (var h = 0; h < app.archives.size(); h += 1) {
+                var a = app.archives[h]; var state = a[0][4];
+                oldRows.add([(h + 1).toString() + " 局数" + state[2].toString() + ":" + state[3].toString(),"archiveItem",h]);
+            }
+            self.push("最近八场",oldRows,"archives",null); return;
         }
-        if (id.equals("lastGames")) { self.games(app.lastMatch[0], "上场各局", app.lastMatch.size() > 3 ? app.lastMatch[3] : null,
-            app.lastMatch.size() > 5 ? app.lastMatch[5] : null); return; }
+        if (id.equals("rules")) {
+            var e = app.engine; var midpoint = e.target == 21 ? 11 : (e.target == 15 ? 8 : 0);
+            var ruleRows = [[e.target.toString() + "分 封顶" + e.cap.toString(),"none",null],
+                [e.bestOf == 3 ? "三局两胜" : "单局","none",null],
+                [app.ruleMode == 1 ? "上局胜方先发球" : "练习可自选首发","none",null]];
+            if (midpoint > 0) {
+                ruleRows.add([midpoint.toString() + "分间歇至多60秒","none",null]);
+                ruleRows.add(["局间至多120秒","none",null]);
+                ruleRows.add(["第三局" + midpoint.toString() + "分换边","none",null]);
+            }
+            if (e.target == 15) { ruleRows.add(["新规2027年1月4日","none",null]); }
+            self.push("比赛规则",ruleRows,"rules",null); return;
+        }
+        if (id.equals("pauseMatch")) {
+            if (!app.setMatchPaused(!app.paused)) { self.message("无法继续",app.notice); }
+            else { self.root(); }
+            return;
+        }
         if (id.equals("pages")) {
             self.push("数据页面", [["比分","page",0],["运动数据","page",1],["当前时间","page",2]], "pages", null); return;
         }
@@ -445,9 +506,9 @@ class MatchMenu extends WatchUi.View {
 class MatchMenuDelegate extends WatchUi.BehaviorDelegate {
     var menu;
     function initialize(view) { BehaviorDelegate.initialize(); menu = view; }
-    function onPreviousPage() { menu.move(-1); return true; }
-    function onNextPage() { menu.move(1); return true; }
-    function onSelect() { menu.select(); return true; }
-    function onBack() { menu.back(); return true; }
+    function onPreviousPage() { if (menu.app.acceptInput()) { menu.move(-1); } return true; }
+    function onNextPage() { if (menu.app.acceptInput()) { menu.move(1); } return true; }
+    function onSelect() { if (menu.app.acceptInput()) { menu.select(); } return true; }
+    function onBack() { if (menu.app.acceptInput()) { menu.back(); } return true; }
     function onMenu() { return true; }
 }

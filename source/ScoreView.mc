@@ -56,6 +56,8 @@ class ScoreView extends WatchUi.View {
         if (app.recorder.status == 1) { top = "记录 " + self.timeLabel(); color = Graphics.COLOR_GREEN; }
         if (app.recorder.status == 2) { top = "暂停 " + self.timeLabel(); color = Graphics.COLOR_YELLOW; }
         if (app.recorder.status == 3) { top = "已存 " + self.timeLabel(); }
+        if (app.paused) { top = "比赛已暂停"; color = Graphics.COLOR_YELLOW; }
+        if (app.settling) { top = "结算待完成"; color = Graphics.COLOR_YELLOW; }
         if (app.locked) { top += " 锁"; }
         self.text(dc, 140, 22, top, color, Graphics.FONT_XTINY, 180, 24);
     }
@@ -98,11 +100,15 @@ class ScoreView extends WatchUi.View {
         else if (app.locked) { message = "请先解锁按键"; }
         else if (message.equals("")) { message = "2我方 3对方 5撤销"; }
         if (app.saveFailed) { message = "比分保存失败"; }
-        self.text(dc, 140, 197, message, app.saveFailed ? Graphics.COLOR_RED : Graphics.COLOR_LT_GRAY,
+        if (e.serveReady() && s[4] == 0) {
+            self.text(dc,140,181,badmintonPlayerName(e.serverPlayer()) + (e.serviceCourt() == 0 ? "右 发 " : "左 发 ") +
+                badmintonPlayerName(e.receiverPlayer()) + "接",Graphics.COLOR_WHITE,Graphics.FONT_XTINY,206,22);
+        }
+        self.text(dc, 140, 205, message, app.saveFailed ? Graphics.COLOR_RED : Graphics.COLOR_LT_GRAY,
             Graphics.FONT_XTINY, 238, 24);
-        self.text(dc, 140, 222, "心率" + self.metricText(app.stats.heartRate) +
+        self.text(dc, 140, 230, "心率" + self.metricText(app.stats.heartRate) +
             " 热量" + self.metricText(app.stats.calories), Graphics.COLOR_WHITE, Graphics.FONT_XTINY, 212, 24);
-        self.text(dc, 140, 247, s[4] == 0 ? "4开球 长按2菜单" :
+        self.text(dc, 140, 254, s[4] == 0 ? "4开球 长按2菜单" :
             (s[4] == 1 ? "4下一局 5撤销" : "4查看结果 5撤销"), Graphics.COLOR_LT_GRAY, Graphics.FONT_XTINY, 145, 22);
     }
     function courtLines(dc as Graphics.Dc) {

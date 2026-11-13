@@ -8,7 +8,7 @@ A five-button badminton watch app for Garmin Fēnix 6X Pro / Solar.
 
 [中文](README.md) · **English**
 
-[![Version](https://img.shields.io/badge/source-v0.10.0-00b96b)](https://github.com/yilongzhao1122/garmin-badminton-score/releases/latest)
+[![Version](https://img.shields.io/badge/source-v0.11.0-00b96b)](https://github.com/yilongzhao1122/garmin-badminton-score/releases/latest)
 [![Target](https://img.shields.io/badge/device-fenix6xpro-333333)](manifest.xml)
 [![License](https://img.shields.io/badge/code-MIT-blue)](LICENSE)
 
@@ -20,7 +20,7 @@ A five-button badminton watch app for Garmin Fēnix 6X Pro / Solar.
 
 ## A match on your wrist
 
-- **Singles and doubles** with 21-point scoring,15/11-point practice formats, a one-game match or best of three.
+- **Singles and doubles** with 21-point scoring,15-point format and 11-point practice format, a one-game match or best of three.
 - **Two-button scoring**: UP for your team, DOWN for the opponent. A yellow arrow marks the last scoring side.
 - **Service court guidance**: START shows an overhead court, server and service side. Doubles use fixed A1/A2/B1/B2 identifiers.
 - **Complete match flow**: game checkpoints, next-game service setup, win/encouragement effects, final save or discard.
@@ -38,9 +38,9 @@ Menus default to 19px. A Connect IQ phone setting selects 19px or 16px without c
 
 | File | Purpose |
 | --- | --- |
-| [Source ZIP](https://github.com/yilongzhao1122/garmin-badminton-score/releases/latest/download/garmin-badminton-score-v0.10.0-source.zip) | Complete project to build with your own SDK and key |
-| [Offline English guide](https://github.com/yilongzhao1122/garmin-badminton-score/releases/latest/download/garmin-badminton-score-v0.10.0-guide-en.html) | Standalone HTML with embedded illustrations |
-| [Offline Chinese guide](https://github.com/yilongzhao1122/garmin-badminton-score/releases/latest/download/garmin-badminton-score-v0.10.0-guide-cn.html) | Standalone Chinese instructions |
+| [Source ZIP](https://github.com/yilongzhao1122/garmin-badminton-score/releases/latest/download/garmin-badminton-score-v0.11.0-source.zip) | Complete project to build with your own SDK and key |
+| [Offline English guide](https://github.com/yilongzhao1122/garmin-badminton-score/releases/latest/download/garmin-badminton-score-v0.11.0-guide-en.html) | Standalone HTML with embedded illustrations |
+| [Offline Chinese guide](https://github.com/yilongzhao1122/garmin-badminton-score/releases/latest/download/garmin-badminton-score-v0.11.0-guide-cn.html) | Standalone Chinese instructions |
 | [SHA256SUMS.txt](https://github.com/yilongzhao1122/garmin-badminton-score/releases/latest/download/SHA256SUMS.txt) | Download checksums |
 
 **This is a source release without a precompiled PRG.** Install Garmin's official Monkey C extension and SDK, download `fenix6xpro`, and run `Monkey C: Verify Installation`. Open the project root in VS Code, configure your own Developer Key, then open source/BadmintonApp.mc → **Ctrl+F5 → fenix6xpro**.
@@ -69,7 +69,7 @@ UP/DOWN do not score on data pages. Scoring lock and activity pause are independ
 4. No at the next-game question preserves the terminal score. Press 4 to re-enter. Setup does not clear scores until the receiver is confirmed.
 5. At match end:4 → Result effect → Save match? → 0:0 ready. The app stays open for another match or new configuration.
 
-The21-point format requires a two-point lead, capped at 30;21:20 continues. Best of three ends after two game wins. The15/11-point practice formats cap at 21/15 respectively.
+The21-point format requires a two-point lead, capped at 30;21:20 continues. Best of three ends after two game wins. The15-point format and 11-point practice format cap at 21/15 respectively.
 
 ![Singles and doubles service-court examples](docs/assets/courts.png)
 
@@ -80,7 +80,7 @@ Opponents remain above the net, your side below. Even scores serve from the serv
 | Data | Storage / viewing |
 | --- | --- |
 | Heart rate, calories, activity duration | Ordinary FIT when recording is enabled and saved; synchronized by the watch to Connect |
-| Game scores/times, service and match result | In the watch app; retains the last saved match archive |
+| Game scores/times, service and match result | In the watch app; retains the latest eight match archives |
 | Save game choice | Local checkpoint; does not split the overall FIT activity |
 | Detailed scores in Connect | Custom FIT fields are disabled by default; detailed score charts are not provided |
 
@@ -97,10 +97,26 @@ node tools/check_performance.cjs
 node tools/check_serve_ui.cjs
 ```
 
-**166 Node logic / mocked-API checks pass**;25 native-format Run No Evil functions are supplied. These checks do not replace Garmin SDK compilation, official simulator execution, device heap measurements or real FIT/Connect acceptance. See [Validation](docs/VALIDATION_EN.md).
+**196 Node logic / mocked-API checks pass**;25 native-format Run No Evil functions are supplied. These checks do not replace Garmin SDK compilation, official simulator execution, device heap measurements or real FIT/Connect acceptance. See [Validation](docs/VALIDATION_EN.md).
 
 Read [Contributing](docs/CONTRIBUTING_EN.md), [Architecture](docs/ARCHITECTURE_EN.md) and [Publication](docs/PUBLISH_EN.md) for development and release details.
 
 ## License and attribution
 
 Code: [MIT](LICENSE). BadmintonCN is a bitmap subset derived from Noto Sans CJK SC Bold, licensed under [SIL OFL1.1](FONT_LICENSE.txt). Retain its attribution and license. Garmin, Fēnix and Connect IQ are trademarks of their owners. This is an independent project.
+
+## Pause, rules and match history
+
+The root menu has Pause match (暂停比赛) / Resume match (继续比赛), available with or without an activity recording. Both match clocks stop and scoring is blocked while paused. Unlocking keys does not resume play. An active FIT recording pauses/resumes with this command.
+
+Button 4 starts a game and shows the service court. A direct first score on button 2/3 also starts its timer and the requested recording; timing begins at that keypress. The scoreboard displays the actual server, their left/right service court and the receiver, using A1/A2/B1/B2.
+
+21-point games show an interval reminder at 11; 15-point games at 8. The same threshold in game three also prompts a change of ends. The rule panel lists 60-second midgame and 120-second between-game interval limits. Reminders do not pause automatically; the court keeps its team-relative orientation. The 15-point rules take effect on 4 January 2027; this release never changes a live match based on the date. The 11-point practice preset has no formal interval reminders.
+
+Match settings → History (历史比赛) keeps eight matches, newest first. It lists the match winner, games won, date, singles/doubles, points format, duration and game scores. The oldest entry is replaced on saving a ninth match. Last match (上场比赛) remains a shortcut.
+
+Live HR clears to -- when recording stops or pauses. Saved average/maximum HR and calories remain a summary; discarding clears that summary. Shared 350 ms transition guards prevent a repeated press from confirming successive screens.
+
+Scores, timing, checkpoints, settlement and bounded history are stored in one versioned snapshot. Older saves migrate once. Restoring excludes app downtime; FIT remains a separate Garmin operation.
+
+[Review changes](docs/REVIEW_CHANGES_EN.md) · [Validation](docs/VALIDATION_EN.md)
